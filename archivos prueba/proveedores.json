@@ -1,0 +1,67 @@
+{
+    "proveedores": [
+        {
+            "id": 6,
+            "nombre": "proveedor3",
+            "direccion": "ciudad",
+            "telefono": 51515151,
+            "correo": "proveedor3@gmail.com"
+        },
+        {
+            "id": 1,
+            "nombre": "proveedor1",
+            "direccion": "ciudad",
+            "telefono": 59595959,
+            "correo": "proveedor1@gmail.com"
+        },
+        {
+            "id": 7,
+            "nombre": "proveedor1",
+            "direccion": "ciudad",
+            "telefono": 59595959,
+            "correo": "proveedor1@gmail.com"
+        },
+        {
+            "id": 3,
+            "nombre": "proveedor3",
+            "direccion": "ciudad",
+            "telefono": 51515151,
+            "correo": "proveedor3@gmail.com"
+        },
+        {
+            "id": 4,
+            "nombre": "proveedor1",
+            "direccion": "ciudad",
+            "telefono": 59595959,
+            "correo": "proveedor1@gmail.com"
+        },
+        {
+            "id": 2,
+            "nombre": "proveedor2",
+            "direccion": "ciudad",
+            "telefono": 55550000,
+            "correo": "proveedor2@gmail.com"
+        },
+        {
+            "id": 5,
+            "nombre": "proveedor2",
+            "direccion": "ciudad",
+            "telefono": 55550000,
+            "correo": "proveedor2@gmail.com"
+        }, 
+        {
+            "id": 9,
+            "nombre": "proveedor3",
+            "direccion": "ciudad",
+            "telefono": 51515151,
+            "correo": "proveedor3@gmail.com"
+        },
+        {
+            "id": 8,
+            "nombre": "proveedor2",
+            "direccion": "ciudad",
+            "telefono": 55550000,
+            "correo": "proveedor2@gmail.com"
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "vendedores": [
+        {
+            "id": 1,
+            "nombre": "juan",
+            "username": "j",
+            "edad": 25,
+            "correo": "juan@gmail.com",
+            "password": "juanito1234"
+        },
+        {
+            "id": 2,
+            "nombre": "Luis",
+            "username": "l",
+            "edad": 30,
+            "correo": "luis@gmail.com",
+            "password": "luis555"
+        },
+        {
+            "id": 3,
+            "nombre": "juan",
+            "username": "j1",
+            "edad": 25,
+            "correo": "juan@gmail.com",
+            "password": "juanito1234"
+        },
+        {
+            "id": 4,
+            "nombre": "Luis",
+            "username": "l1",
+            "edad": 30,
+            "correo": "luis@gmail.com",
+            "password": "luis555"
+        },
+        {
+            "id": 5,
+            "nombre": "juan",
+            "username": "j2",
+            "edad": 25,
+            "correo": "juan@gmail.com",
+            "password": "juanito1234"
+        },
+        {
+            "id": 6,
+            "nombre": "Luis",
+            "username": "l2",
+            "edad": 30,
+            "correo": "luis@gmail.com",
+            "password": "luis555"
+        }
+    ]
+}

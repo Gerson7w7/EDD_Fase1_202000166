@@ -1,0 +1,87 @@
+.carta {
+    margin-top: 6rem;
+}
+
+.card-header {
+    text-align: center;
+    font-size: 30px;
+}
+
+.bg-light .btn {
+    background-color: #41d7a7;
+}
+
+.col-3 {
+    background-color: white;
+}
+.panel {
+    margin: 0px;
+    max-width: none;  
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+}
+
+.centrado {
+    align-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    color: #312822;
+    font-family: 'Readex Pro', sans-serif;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.font {
+    color: black;
+    font-family: 'Readex Pro', sans-serif;
+    margin-bottom: 100px;
+}
+
+.btn-warning {
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+.font {
+    color: rgb(255, 255, 255);
+    font-family: 'Readex Pro', sans-serif;
+    margin-bottom: 100px;
+}
+
+.logo-titulo {
+    font-size: 70px;
+}
+
+.titulo {
+    margin: 30px;
+}
+
+.tab {
+    margin: 0px;
+}
+
+.nav {
+    justify-content: center;
+}
+
+.fondo {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+}
+.user {
+    color: rgb(0, 0, 0);
+    font-family: 'Readex Pro', sans-serif;
+    margin-bottom: 100px;
+}
+p {
+    font-family: 'Readex Pro', sans-serif;
+}

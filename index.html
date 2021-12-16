@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://bootswatch.com/5/quartz/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/css.css" />
+    <title>ERP</title>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center carta">
+      <div class="card bg-light mb-3" style="max-width: 20rem">
+        <div class="card-header"><div><i class="fas fa-hotel"></i></div><div>Login</div></div>
+        <div class="card-body">
+          <form id="formLogin">
+            <div class="mb-3">
+              <label for="username" class="form-label"
+                ><span><i class="far fa-user"></i></span> Username</label
+              >
+              <input
+                class="form-control"
+                id="username"
+                placeholder="Username"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label"
+                ><span><i class="fas fa-key"></i></span> Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+              />
+            </div>
+            <div class="d-flex justify-content-center"><button type="submit" class="btn btn-success">Ingresar</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center" id="errorLogin"></div>
+    <script type="text/javascript" src="./js/Clases.js"></script>
+    <script type="text/javascript" src="./js/circular-json.js"></script>
+    <script type="text/javascript" src="./js/Serealizacion.js"></script>
+    <script type="text/javascript" src="./js/AVL.js"></script>
+    <script type="text/javascript" src="./js/ListaDoble.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
+  </body>
+</html>

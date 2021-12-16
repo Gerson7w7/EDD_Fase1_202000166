@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://bootswatch.com/5/quartz/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/css.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@200&family=Readex+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <title>ERP</title>
+  </head>
+  <body>
+    <div class="container panel">
+      <div class="row">
+        <div class="col-3">
+          <div class="d-flex justify-content-center">
+            <img class="logo" src="./images/ERP.jpg" alt="" />
+          </div>
+          <div class="d-flex justify-content-center">
+            <p class="user">Planificación de Recursos Empresariales</p>
+          </div>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="cargaDatos.html"
+                ><span><i class="fas fa-cloud-upload-alt"></i></span> Carga de archivos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="regEmpleado.html"
+                ><span><i class="fas fa-id-card"></i></span> Registrar
+                Usuario</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reportes.html"
+                ><span><i class="fas fa-chart-pie"></i></span> Reportes</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-warning">Cerrar sesión</button>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="titulo">
+            <div class="d-flex justify-content-center">
+              <i class="fas fa-id-badge logo-titulo"></i>
+            </div>
+            <div class="d-flex justify-content-center"><h1>Registrar Usuario</h1></div>
+          </div>
+          <form>
+            <div class="d-flex justify-content-evenly">
+              <div class="form-group">
+                <label for="id" class="form-label mt-4">ID</label>
+                <input type="number" class="form-control" id="id" />
+              </div>
+              <div class="form-group">
+                <label for="nombre" class="form-label mt-4">Nombre</label>
+                <input type="text" class="form-control" id="nombre" />
+              </div>
+              <div class="form-group">
+                <label for="username" class="form-label mt-4">Username</label>
+                <input type="text" class="form-control" id="username" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-evenly">
+              <div class="form-group">
+                <label for="dir" class="form-label mt-4">Dirección</label>
+                <input type="text" class="form-control" id="dir" />
+              </div>
+              <div class="form-group">
+                <label for="tel" class="form-label mt-4">Teléfono</label>
+                <input type="text" class="form-control" id="tel" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-evenly">
+              <div class="form-group">
+                <label for="correo" class="form-label mt-4">e-mail</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="correo"
+                  size="50px"
+                />
+              </div>
+            </div>
+            <div class="d-flex justify-content-evenly">
+              <button type="button" class="btn btn-success titulo">
+                Registrar usuario
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

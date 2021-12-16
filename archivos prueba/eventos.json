@@ -1,0 +1,32 @@
+{
+    "vendedores": [
+        {
+            "id": 1,
+            "eventos": [
+                {
+                    "mes": 1,
+                    "dia": 10,
+                    "hora": 7,
+                    "desc": "reunion"
+                },
+                {
+                    "mes": 5,
+                    "dia": 15,
+                    "hora": 13,
+                    "desc": "Almuerzo"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "eventos": [
+                {
+                    "mes": 12,
+                    "dia": 24,
+                    "hora": 15,
+                    "desc": "convivio navideño"
+                }
+            ]
+        }
+    ]
+}
