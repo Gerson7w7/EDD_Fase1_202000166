@@ -17,6 +17,11 @@
                     "id": 3,
                     "nombre": "cliente3",
                     "correo": "cliente3@gmail.com"
+                },
+                {
+                    "id": 1,
+                    "nombre": "cliente3",
+                    "correo": "cliente3@gmail.com"
                 }
             ]
         },

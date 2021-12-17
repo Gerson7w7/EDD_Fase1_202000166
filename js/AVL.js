@@ -89,27 +89,70 @@ class AVL {
     }
 
     // método para guardar las lista de los clientes a los vendedores
-    addLista(id, lista, aux){
+    addListaClientes(id, lista, aux){
         if(aux != null){
-            this.addLista(id, lista, aux.izq);
+            this.addListaClientes(id, lista, aux.izq);
             if(aux.dato.id == id){ // si encuentra el id del vendedor            
                 aux.dato.lClientes = lista;
             }
-            this.addLista(id, lista, aux.der);
+            this.addListaClientes(id, lista, aux.der);
         } 
     }
 
-    buscar(username, password, aux){
-        let usuario;
+    // método para guardar un cliente a un vendedor
+    addCliente(id, dato, aux){
         if(aux != null){
-            usuario = this.buscar(username, password, aux.izq);
+            this.addCliente(id, dato, aux.izq);
+            if(aux.dato.id == id){ // si encuentra el id del vendedor            
+                aux.dato.lClientes.add(dato);
+            }
+            this.addCliente(id, dato, aux.der);
+        } 
+    }
+
+    // método para guardar las lista de meses para los eventos
+    addListaEventos(id, lista, aux){
+        if(aux != null){
+            this.addListaEventos(id, lista, aux.izq);
+            if(aux.dato.id == id){ // si encuentra el id del vendedor            
+                aux.dato.eventos = lista;
+            }
+            this.addListaEventos(id, lista, aux.der);
+        } 
+    }
+
+    // método para guardar un eventos
+    addMes(id, mes, aux){
+        if(aux != null){
+            this.addMes(id, mes, aux.izq);
+            if(aux.dato.id == id){ // si encuentra el id del vendedor            
+                aux.dato.eventos.add(mes);
+            }
+            this.addMes(id, mes, aux.der);
+        } 
+    }
+
+    // método para guardar la matriz para los eventos
+    addMatrixEventos(id, mes, dato, x, y, aux){
+        if(aux != null){
+            this.addMatrixEventos(id, mes, dato, x, y, aux.izq);
+            if(aux.dato.id == id){ // si encuentra el id del vendedor            
+                aux.dato.eventos.addMatrix(mes, dato, x, y)
+            }
+            this.addMatrixEventos(id, mes, dato, x, y, aux.der);
+        } 
+    }
+
+    buscar(username, password, aux, usuario){
+        if(aux != null){
+            usuario = this.buscar(username, password, aux.izq, usuario);
             // console.log('nombre: ' + aux.dato.username + ' password: ' + aux.dato.password)
             // console.log('nombre: ' + username + ' password: ' + password)
             if(aux.dato.username == username && aux.dato.password == password){
                 console.log('nombre: ' + aux.dato.username + ' password: ' + aux.dato.password)
-                return true;
+                return aux.dato;
             } 
-            usuario = this.buscar(username, password, aux.der);
+            usuario = this.buscar(username, password, aux.der, usuario);
         } 
         return usuario;
     }
@@ -132,14 +175,18 @@ class AVL {
 
     deserealizarEDD(aux){
         if(aux != null){
-            this.inOrder(aux.izq);
-            console.log(aux.dato.id);
-            if(aux.dato.lista != null){
-                let s = new Serealizacion();
-                aux.dato.lClientes = s.cambiazo(new ListaDoble(), aux.dato.lista);
-                //aux.dato.lista.mostrar(); 
-            }  
-            this.inOrder(aux.der);
+            this.deserealizarEDD(aux.izq);
+            let s = new Serealizacion();
+            if(aux.dato.lClientes != null){
+                aux.dato.lClientes = s.cambiazo(new ListaDoble(), aux.dato.lClientes);
+                console.log('estoy aki')
+                aux.dato.lClientes.mostrar(); 
+            }if(aux.dato.eventos.primero != null){
+                aux.dato.eventos = s.cambiazo(new ListaDoble(), aux.dato.eventos);
+                aux.dato.eventos.deserealizarEDD();
+                aux.dato.eventos.mostrar2(); 
+            } 
+            this.deserealizarEDD(aux.der);
         } 
     }
 
@@ -156,6 +203,8 @@ class AVL {
         if(aux != null){
             this.inOrder(aux.izq);
             console.log(aux.dato.id); 
+            //aux.dato.lClientes.mostrar(); 
+            //aux.dato.eventos.mostrar2(); 
             this.inOrder(aux.der);
         } 
     }

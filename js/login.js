@@ -19,12 +19,15 @@ function login() {
             error.innerHTML= "<p></p>" 
             window.location.href = "./cargaDatos.html"; 
         }else { 
-            let usuario = arbolVendedores.buscar(username, password, arbolVendedores.raiz);
+            let usuario = null;
+            usuario = arbolVendedores.buscar(username, password, arbolVendedores.raiz, usuario);
             console.log(usuario)
-            if(usuario){
+            console.log(password)
+            if(usuario != null){
                 // usuario
                 console.log('usuario');   
                 error.innerHTML= "<p></p>" 
+                localStorage.setItem('usuario', JSON.stringify(usuario.id));
                 window.location.href = "./lClientes.html"; 
             }else{
                 // error

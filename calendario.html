@@ -82,25 +82,24 @@
               </p>
             </div>
             <div class="tab-pane fade" id="agregar">
-              <p>
-                
-                <form>
+              <p>              
+                <form id="regEvento">
                   <div class="d-flex justify-content-evenly">
                     <div class="form-group">
                       <label for="mes" class="form-label mt-4">Mes</label>
                       <select class="form-select" id="mes">
-                        <option>Enero</option>
-                        <option>Febrero</option>
-                        <option>Marzo</option>
-                        <option>Abril</option>
-                        <option>Mayo</option>
-                        <option>Junio</option>
-                        <option>Julio</option>
-                        <option>Agosto</option>
-                        <option>Septiembre</option>
-                        <option>Octubre</option>
-                        <option>Noviembre</option>
-                        <option>Diciembre</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -150,9 +149,27 @@
                     </div>
                   </div>
                   <div class="d-flex justify-content-evenly">
-                    <button type="button" class="btn btn-success titulo">
+                    <!-- Button trigger modal -->
+                    <button type="submit" class="btn btn-success titulo" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                       Agregar evento
                     </button>
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="notificacionRE" class="modal-body">
+                          Creo que algo ha salido mal:(
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok!</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </p>
@@ -162,5 +179,12 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/circular-json.js"></script>
+    <script type="text/javascript" src="./js/Clases.js"></script>
+    <script type="text/javascript" src="./js/AVL.js"></script>
+    <script type="text/javascript" src="./js/ListaDoble.js"></script>
+    <script type="text/javascript" src="./js/Matriz.js"></script>
+    <script type="text/javascript" src="./js/Serealizacion.js"></script>
+    <script type="text/javascript" src="./js/calendario.js"></script>
   </body>
 </html>

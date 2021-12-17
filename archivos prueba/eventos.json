@@ -14,6 +14,30 @@
                     "dia": 15,
                     "hora": 13,
                     "desc": "Almuerzo"
+                },
+                {
+                    "mes": 10,
+                    "dia": 18,
+                    "hora": 1,
+                    "desc": "cumple"
+                },
+                {
+                    "mes": 12,
+                    "dia": 24,
+                    "hora": 24,
+                    "desc": "Navidad"
+                },
+                {
+                    "mes": 6,
+                    "dia": 30,
+                    "hora": 4,
+                    "desc": "partido"
+                },
+                {
+                    "mes": 1,
+                    "dia": 10,
+                    "hora": 16,
+                    "desc": "shopping"
                 }
             ]
         },

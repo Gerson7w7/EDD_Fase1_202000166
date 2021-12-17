@@ -37,7 +37,7 @@ class ListaDatos{
                         // si la posición del nuevo es menor a la posición actual de la lista en y
                         nuevo.derecha = aux;
                         nuevo.izquierda = aux.izquierda;
-                        aux.izquierda.siguiente = nuevo;
+                        aux.izquierda.derecha = nuevo;
                         aux.izquierda = nuevo;   
                         break;                   
                     }else if(aux.derecha == null){
@@ -179,7 +179,73 @@ class ListaCabecera{
 
 class Matrix{
     constructor(){
+        // creamos las cabeceras tanto de x como de y
         this.cabeceraX = new ListaCabecera();
         this.cabeceraY = new ListaCabecera();
     }
+
+    add(dato, x, y){
+        // primero verificamos si las cabeceras ya existen
+        let nodoX = this.cabeceraX.buscarCabecera(x);
+        let nodoY = this.cabeceraY.buscarCabecera(y);
+
+        // si no existen los nodos los creamos
+        if(nodoX == null){
+            nodoX = new NodoCabecera(x);
+            // incertamos la cabecera que se acaba de crear
+            this.cabeceraX.add(nodoX);
+        }
+        if(nodoY == null){
+            nodoY = new NodoCabecera(y);
+            // incertamos la cabecera que se acaba de crear
+            this.cabeceraY.add(nodoY);
+        }
+
+        // incertamos el dato en las cabeceras x & y
+        nodoX.listaDatos.addX(dato, x, y);
+        nodoY.listaDatos.addY(dato, x, y);
+    }
+
+    recorrerMatrix(){
+        // recorremos la cabecera de x y sus listas internas
+        console.log('==== Cabeceras X ====');
+        let aux = this.cabeceraX.primero;
+        while(aux != null){
+            // cabeceras
+            console.log('   pos: ' + aux.dato);
+            let aux2 = aux.listaDatos.primero;
+            while(aux2 != null){
+                // datos internos
+                console.log('       dato:' + aux2.dato);
+                aux2 = aux2.derecha;
+            }
+            aux = aux.siguiente;
+        }
+
+        console.log('==== Cabeceras Y ====');
+        aux = this.cabeceraY.primero;
+        while(aux != null){
+            // cabeceras
+            console.log('   pos: ' + aux.dato);
+            let aux2 = aux.listaDatos.primero;
+            while(aux2 != null){
+                // datos internos
+                console.log('       dato:' + aux2.dato);
+                aux2 = aux2.abajo;
+            }
+            aux = aux.siguiente;
+        }
+    }
 }
+
+// let matriz1 = new Matrix();
+
+// matriz1.add(0,0,0);
+// matriz1.add(12,0,1);
+// matriz1.add(5,1,1);
+// matriz1.add(6,2,3);
+// matriz1.add(1,10,1);
+// matriz1.add(2,1,2);
+// matriz1.add(7,3,3);
+
+// matriz1.recorrerMatrix();

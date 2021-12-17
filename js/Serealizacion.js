@@ -6,6 +6,8 @@ class Serealizacion {
         let arbolVendedores = new AVL();
         // deserealizando
         arbolVendedores = this.deserealizar(arbolVendedores, "v");
+        // obteniendo los clientes y los meses de los eventos
+        arbolVendedores.deserealizarEDD(arbolVendedores.raiz);
         // notificacion de carga exitosa o erronea
         let notificacion = document.getElementById('notificacionCA');
         notificacion.innerHTML = 'Creo que algo ha salido mal:('
@@ -15,15 +17,30 @@ class Serealizacion {
             objects.vendedores.forEach((v) => {
                 let lClientes = new ListaDoble();
                 v.clientes.forEach((c) => {
-                    let cliente = new Cliente(c.id, c.nombre, c.correo);
+                    let cliente = new Cliente(parseInt(c.id), c.nombre, c.correo);
                     lClientes.add(cliente);
                 });
-                arbolVendedores.addLista(v.id, lClientes, arbolVendedores.raiz);
+                arbolVendedores.addListaClientes(v.id, lClientes, arbolVendedores.raiz);
             });
             localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores)); // ===================posiblemente pueda ir de los else if
             notificacion.innerHTML = 'Se ha cargado exitosamente los Clientes! :D'
 
         } else if (tipo == "Eventos") {
+            // creando los eventos y guardándolos en el local storage
+            objects.vendedores.forEach((v)=> {
+                let lEventos = new ListaDoble();        
+                // primero guardamos los meses         
+                v.eventos.forEach((e) => {
+                    lEventos.add(e.mes);
+                });
+                arbolVendedores.addListaEventos(v.id, lEventos, arbolVendedores.raiz);
+                // ahora guardamos las matrices (eventos)
+                v.eventos.forEach((e) => {
+                    arbolVendedores.addMatrixEventos(v.id, e.mes, e.desc, e.dia, e.hora, arbolVendedores.raiz);
+                });   
+            });
+            localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores));
+            notificacion.innerHTML = 'Se ha cargado exitosamente los Eventos! :D'
         } else if (tipo == "Proveedores") {
             let arbolProveedores = new ABB();
             // creando los proveedores y guardándolos en el local storage
@@ -46,16 +63,13 @@ class Serealizacion {
 
     deserealizar(tipoObjeto, tipo) {
         let json;
-        if (tipo == "v") {
+        if(tipo == "v") {
             // deserealizando los vendedores
             json = CircularJSON.parse(localStorage.getItem("arbolVendedores"));
-        } else if (tipo == "e") {
-            json = CircularJSON.parse(localStorage.getItem(""));
-        } else if (tipo == "p") {
-            json = CircularJSON.parse(localStorage.getItem(""));
+        }else if (tipo == "p") {
+            json = CircularJSON.parse(localStorage.getItem("arbolProveedores"));
         }
         tipoObjeto = this.cambiazo(tipoObjeto, json);
-
         return tipoObjeto;
     }
 

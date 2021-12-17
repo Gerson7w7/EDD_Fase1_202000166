@@ -14,6 +14,7 @@ class Vendedor {
         this.correo = correo;
         this.password = password;
         this.lClientes = null;
+        this.eventos = new ListaDoble();
     }
 }
 

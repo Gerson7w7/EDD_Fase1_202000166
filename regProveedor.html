@@ -64,7 +64,7 @@
             <div class="d-flex justify-content-center">
               <i class="fas fa-id-badge logo-titulo"></i>
             </div>
-            <div class="d-flex justify-content-center"><h1>Administración de Usuarios</h1></div>
+            <div class="d-flex justify-content-center"><h1>Administración de Proveedores</h1></div>
           </div>
           <ul class="nav nav-tabs">
             <li class="nav-item tab">
@@ -82,30 +82,26 @@
             <div class="tab-pane fade active show" id="cRegistrar">
               <p>
                 <div>
-                  <div class="d-flex justify-content-center"><h2>Agregar Usuario</h2></div>    
-                  <form id="regUsuario">
+                  <div class="d-flex justify-content-center"><h2>Agregar Proveedor</h2></div>    
+                  <form id="regProveedor">
                     <div class="d-flex justify-content-evenly">
                       <div class="form-group">
                         <label for="id" class="form-label mt-4">ID</label>
-                        <input type="number" class="form-control" id="id" required/>
+                        <input type="number" class="form-control" id="id" />
                       </div>
                       <div class="form-group">
                         <label for="nombre" class="form-label mt-4">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="username" class="form-label mt-4">Username</label>
-                        <input type="text" class="form-control" id="username" required/>
+                        <input type="text" class="form-control" id="nombre" />
                       </div>
                     </div>
                     <div class="d-flex justify-content-evenly">
                       <div class="form-group">
-                        <label for="password" class="form-label mt-4">Password</label>
-                        <input type="text" class="form-control" id="password" required/>
+                        <label for="dir" class="form-label mt-4">Dirección</label>
+                        <input type="text" class="form-control" id="dir" />
                       </div>
                       <div class="form-group">
-                        <label for="tel" class="form-label mt-4">Edad</label>
-                        <input type="number" class="form-control" id="edad" required/>
+                        <label for="tel" class="form-label mt-4">Teléfono</label>
+                        <input type="number" class="form-control" id="tel" />
                       </div>
                     </div>
                     <div class="d-flex justify-content-evenly">
@@ -116,14 +112,13 @@
                           class="form-control"
                           id="correo"
                           size="50px"
-                          required
                         />
                       </div>
                     </div>
                     <div class="d-flex justify-content-evenly">
                       <!-- Button trigger modal -->
                       <button type="submit" class="btn btn-success titulo" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        Registrar usuario
+                        Registrar proveedor
                       </button>
                     </div>
                     <!-- Modal -->
@@ -134,7 +129,7 @@
                             <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div id="notificacionRU" class="modal-body">
+                          <div id="notificacionRP" class="modal-body">
                             Creo que algo ha salido mal:(
                           </div>
                           <div class="modal-footer">
@@ -164,8 +159,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./js/circular-json.js"></script>
     <script type="text/javascript" src="./js/Clases.js"></script>
-    <script type="text/javascript" src="./js/AVL.js"></script>
+    <script type="text/javascript" src="./js/ABB.js"></script>
     <script type="text/javascript" src="./js/Serealizacion.js"></script>
-    <script type="text/javascript" src="./js/regEmpleado.js"></script>
+    <script type="text/javascript" src="./js/regProveedor.js"></script>
   </body>
 </html>
