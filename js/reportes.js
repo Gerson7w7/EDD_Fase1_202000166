@@ -123,7 +123,7 @@ function graficarListaDoble() {
                 hierarchical: {
                     levelSeparation: 100,
                     nodeSpacing: 100,
-                    parentCentralization: true,
+                    parentCentralization: false,
                     direction: 'UD',        // UD, DU, LR, RL
                     sortMethod: 'directed',  // hubsize, directed
                     shakeTowards: 'roots'  // roots, leaves                        
@@ -170,19 +170,19 @@ function graficarMatrix() {
                     edges: parsedData.edges
                 }
                 let options = {
-                    nodes: {
-                        widthConstraint: 20,
-                    },
-                    layout: {
-                        hierarchical: {
-                            levelSeparation: 100,
-                            nodeSpacing: 100,
-                            parentCentralization: true,
-                            direction: 'UD',        // UD, DU, LR, RL
-                            sortMethod: 'directed',  // hubsize, directed
-                            shakeTowards: 'roots'  // roots, leaves                        
-                        },
-                    },
+                    // nodes: {
+                    //     widthConstraint: 20,
+                    // },
+                    // layout: {
+                    //     hierarchical: {
+                    //         levelSeparation: 100,
+                    //         nodeSpacing: 100,
+                    //         parentCentralization: true,
+                    //         direction: 'UD',        // UD, DU, LR, RL
+                    //         sortMethod: 'directed',  // hubsize, directed
+                    //         shakeTowards: 'roots'  // roots, leaves                        
+                    //     },
+                    // },
                 };
                 let network = new vis.Network(container, data, options);
                 matrix.graficarMatriz();

@@ -123,6 +123,7 @@ class ListaDoble {
         while(aux != null){
             if(aux.siguiente != null){
                 this.dot += aux.dato.id + '--' + aux.siguiente.dato.id + ';';
+                this.dot += aux.siguiente.dato.id + '--' + aux.dato.id + ';';
             }    
             aux = aux.siguiente;
         }
