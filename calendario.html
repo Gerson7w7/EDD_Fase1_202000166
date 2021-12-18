@@ -63,7 +63,7 @@
 
           <ul class="nav nav-tabs">
             <li class="nav-item tab">
-              <a class="nav-link active" data-bs-toggle="tab" href="#ver"
+              <a class="nav-link active" data-bs-toggle="tab" oninput="setMeses()" href="#ver"
                 ><span><i class="fas fa-eye"></i></span> Ver calendario</a
               >
             </li>
@@ -81,7 +81,7 @@
                     <div class="d-flex justify-content-evenly">
                       <div class="form-group">
                         <label for="idVendedor" class="form-label">Mes</label>
-                        <select class="form-select" id="mes"></select>
+                        <select class="form-select" oninput="graficarMatrix()" id="mes"></select>
                       </div>                       
                     </div>   
                   </form>                             

@@ -17,9 +17,9 @@ function registrar(){
 
         // actualizando el arbol de vendedores en el local storage
         let cliente = new Cliente(parseInt(id), nombre, correo);
-        arbolVendedores.addCliente(usuario, cliente, arbolVendedores.raiz);
+        cliente = arbolVendedores.addCliente(usuario, cliente, arbolVendedores.raiz);
         localStorage.setItem('arbolVendedores', CircularJSON.stringify(arbolVendedores));
-        document.getElementById('notificacionRU').innerHTML = 'Se ha registrado el cliente! :D';
+        document.getElementById('notificacionRU').innerHTML = 'Se ha registrado el cliente! :D';    
     });
 }
 

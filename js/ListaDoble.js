@@ -30,13 +30,14 @@ class ListaDoble {
             let repetido = this.repetido(dato, this.primero)
             if(repetido){
                 console.log('Dato repetido, no se insertó: ' + dato + ' :(');
-                return;
+                return null;
             }
             aux.siguiente = nuevo;
             nuevo.anterior = aux;
             // aumentando tamaño
             this.size++;
         }
+        return nuevo;
     }
 
     // método para verificar si hay algún dato repetido

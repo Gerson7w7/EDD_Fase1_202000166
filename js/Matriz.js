@@ -167,6 +167,15 @@ class ListaCabecera{
         return null;
     }
 
+    deserealizarEDD(){
+        let s = new Serealizacion()
+        let aux = this.primero;
+        while(aux != null){
+            aux.listaDatos = s.cambiazo(new ListaDatos(), aux.listaDatos);
+            aux = aux.siguiente;
+        }
+    }
+
     recorrer(){
         let aux = this.primero;
         while(aux != null){
@@ -210,7 +219,9 @@ class Matrix{
     deserealizarEDD(){
         let s = new Serealizacion();
         this.cabeceraX = s.cambiazo(new ListaCabecera(), this.cabeceraX);  
-        this.cabeceraY = s.cambiazo(new ListaCabecera(), this.cabeceraY);  
+        this.cabeceraY = s.cambiazo(new ListaCabecera(), this.cabeceraY); 
+        this.cabeceraX.deserealizarEDD();
+        this.cabeceraY.deserealizarEDD(); 
     }
 
     recorrerMatrix(){
