@@ -182,6 +182,7 @@ class Matrix{
         // creamos las cabeceras tanto de x como de y
         this.cabeceraX = new ListaCabecera();
         this.cabeceraY = new ListaCabecera();
+        this.dot = '';
     }
 
     add(dato, x, y){
@@ -242,16 +243,135 @@ class Matrix{
             aux = aux.siguiente;
         }
     }
+
+    // graficando arbol
+    dotgen() {
+        let auxX = this.cabeceraX.primero;
+        while(auxX.siguiente != null){
+            // cabeceras
+            this.dot += 'x' + auxX.dato + '--x' + auxX.siguiente.dato + ';';
+            this.dot += 'x' + auxX.siguiente.dato + '--x' + auxX.dato + ';';
+            auxX = auxX.siguiente;
+        }
+        if(this.cabeceraX.primero != null){
+            this.dot += 'Matriz--x' + this.cabeceraX.primero.dato + ';';
+        }
+
+        let auxY = this.cabeceraY.primero;
+        while(auxY.siguiente != null){
+            // cabeceras
+            this.dot += 'y' + auxY.dato + '--y' + auxY.siguiente.dato + ';';
+            this.dot += 'y' + auxY.siguiente.dato + '--y' + auxY.dato + ';';
+            auxY = auxY.siguiente;
+        }
+        if(this.cabeceraY.primero != null){
+            this.dot += 'Matriz--y' + this.cabeceraY.primero.dato + ';';
+        }
+
+        auxX = this.cabeceraX.primero;
+        while(auxX != null){
+            let aux = auxX.listaDatos.primero;
+            while(aux.derecha != null){
+                this.dot += 'x' + aux.x + 'y' + aux.y + '--x' + aux.derecha.x + 'y' + aux.derecha.y + ';';
+                this.dot += 'x' + aux.derecha.x + 'y' + aux.derecha.y + '--x' + aux.x + 'y' + aux.y + ';';
+                aux = aux.derecha;
+            }
+            if(auxX.listaDatos.primero != null){
+                this.dot += 'x' + auxX.dato + '--x' + auxX.listaDatos.primero.x + 'y' + auxX.listaDatos.primero.y + ';';        
+            }
+            auxX = auxX.siguiente;
+        }
+
+        auxY = this.cabeceraY.primero;
+        while(auxY != null){
+            let aux = auxY.listaDatos.primero;
+            while(aux.abajo != null){
+                this.dot += 'x' + aux.x + 'y' + aux.y + '--x' + aux.abajo.x + 'y' + aux.abajo.y + ';';
+                this.dot += 'x' + aux.abajo.x + 'y' + aux.abajo.y + '--x' + aux.x + 'y' + aux.y + ';';
+                aux = aux.abajo;
+            }
+            if(auxY.listaDatos.primero != null){
+                this.dot += 'y' + auxY.dato + '--x' + auxY.listaDatos.primero.x + 'y' + auxY.listaDatos.primero.y + ';';        
+            }
+            auxY = auxY.siguiente;
+        }
+    }
+
+    graficarMatriz(){
+        let cadena = "";
+        cadena += "digraph Matriz{ \n";
+        cadena += "node[shape = box,width=0.7,height=0.7,fillcolor=\"azure2\" color=\"white\" style=\"filled\"];\n";
+        cadena += "edge[style = \"bold\"]; \n"
+
+        cadena +="node[label = Matriz fillcolor=\" darkolivegreen1\" pos = \"-1,1!\"]principal;"
+        // graficando cabeceras en x
+        let auxX = this.cabeceraX.primero;
+        while(auxX != null){
+            cadena += "node[label = " + auxX.dato + " fillcolor=\" azure1\" pos = \"" + auxX.dato + ",1!\"]x" + auxX.dato + ";\n";
+            auxX = auxX.siguiente;
+        }
+        auxX = this.cabeceraX.primero;
+        while(auxX.siguiente != null){
+            cadena += "x" + auxX.dato + "->x" + auxX.siguiente.dato + ";\n";
+            cadena += "x" + auxX.siguiente.dato + "->x" + auxX.dato + ";\n";
+            auxX = auxX.siguiente;
+        }
+
+        if(this.cabeceraX.primero != null){
+            cadena += "principal->x" + this.cabeceraX.primero.dato + ";\n";
+        }
+        // graficando cabeceras en y
+        let auxY = this.cabeceraY.primero;
+        while(auxY != null){
+            cadena += "node[label = " + auxY.dato + " fillcolor=\" azure1\" pos = \"-1,-" + auxY.dato + "!\"]y" + auxY.dato + ";\n";
+            auxY = auxY.siguiente;
+        }
+        auxY = this.cabeceraY.primero;
+        while(auxY.siguiente != null){
+            cadena += "y" + auxY.dato + "->y" + auxY.siguiente.dato + ";\n";
+            cadena += "y" + auxY.siguiente.dato + "->y" + auxY.dato + ";\n";
+            auxY = auxY.siguiente;
+        }
+        if(this.cabeceraX.primero != null){
+            cadena += "principal->y" + this.cabeceraY.primero.dato + ";\n";
+        }
+
+        // graficando los nodos internos
+        auxX = this.cabeceraX.primero;
+        while(auxX != null){ 
+            let aux = auxX.listaDatos.primero;
+            while(aux != null){
+                cadena += "   node[label = " + aux.dato + " fillcolor=\" gold2\" pos = \"" + aux.x + ",-" + aux.y + "!\"]x" + aux.x + "y" + aux.y + ";\n";
+                aux = aux.derecha;
+            }
+            // graficando las flechitas de x
+            aux = auxX.listaDatos.primero;
+            while(aux.derecha != null){
+                cadena += "   x" + aux.x + "y" + aux.y + "->x" + aux.derecha.x + "y" + aux.derecha.y + ";\n";
+                cadena += "   x" + aux.derecha.x + "y" + aux.derecha.y + "->x" + aux.x + "y" + aux.y + ";\n";
+                aux = aux.derecha;
+            }
+            if(auxX.listaDatos.primero != null){
+                cadena += "x" + auxX.dato + "->x" + auxX.listaDatos.primero.x + "y" + auxX.listaDatos.primero.y + ";\n";
+            }
+            auxX = auxX.siguiente;
+        }
+
+        auxY = this.cabeceraY.primero;
+        while(auxY != null){ 
+            // graficando las flechitas de y
+            let aux = auxY.listaDatos.primero;
+            while(aux.abajo != null){
+                cadena += "   x" + aux.x + "y" + aux.y + "->x" + aux.abajo.x + "y" + aux.abajo.y + ";\n";
+                cadena += "   x" + aux.abajo.x + "y" + aux.abajo.y + "->x" + aux.x + "y" + aux.y + ";\n";
+                aux = aux.abajo;
+            }
+            if(auxY.listaDatos.primero != null){
+                cadena += "y" + auxY.dato + "->x" + auxY.listaDatos.primero.x + "y" + auxY.listaDatos.primero.y + ";\n";
+            }
+            auxY = auxY.siguiente;
+        }
+        cadena += "\n}"
+        console.log(cadena);
+    }
 }
-
-// let matriz1 = new Matrix();
-
-// matriz1.add(0,0,0);
-// matriz1.add(12,0,1);
-// matriz1.add(5,1,1);
-// matriz1.add(6,2,3);
-// matriz1.add(1,10,1);
-// matriz1.add(2,1,2);
-// matriz1.add(7,3,3);
-
-// matriz1.recorrerMatrix();

@@ -167,6 +167,17 @@ class AVL {
         return lista;
     }
 
+    retornarListaMeses(username, lista, aux){
+        if(aux != null){
+            lista =  this.retornarListaMeses(username, lista, aux.izq);
+            if(username == aux.dato.id){
+                return aux.dato.eventos;
+            }
+            lista = this.retornarListaMeses(username, lista, aux.der);
+        } 
+        return lista;
+    }
+
     // rotación izquierda derecha
     rid(a1){
         // rotación simple por la izquierda

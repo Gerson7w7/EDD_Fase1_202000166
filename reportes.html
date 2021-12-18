@@ -140,20 +140,21 @@
                 <div>
                   <div class="d-flex justify-content-center"><h2>Calendario</h2></div>
                   <div>
-                    <form>
+                    <form id="gCalendario">
                       <div class="d-flex justify-content-evenly">
                         <div class="form-group">
                           <label for="idVendedor" class="form-label">ID del vendedor</label>
-                          <select class="form-select" id="idVendedor">
-                            <option>1</option>
-                          </select>
+                          <select class="form-select" id="idVendedor"></select>
                         </div>
                         <div class="form-group">
                           <label for="mes" class="form-label">Mes</label>
-                          <select class="form-select" id="mes">
-                            <option>1</option>
-                          </select>
+                          <input type="number" class="form-control" id="mes" required/>
                         </div>
+                        <div class="align-self-center">
+                          <button type="submit" class="btn btn-success">
+                            Graficar
+                          </button>
+                        </div>                       
                       </div>   
                     </form>
                   </div> 
@@ -194,6 +195,7 @@
     <script type="text/javascript" src="./js/Serealizacion.js"></script>
     <script type="text/javascript" src="./js/AVL.js"></script>
     <script type="text/javascript" src="./js/ABB.js"></script>
+    <script type="text/javascript" src="./js/Matriz.js"></script>
     <script type="text/javascript" src="./js/ListaDoble.js"></script>
     <script type="text/javascript" src="./js/reportes.js"></script>
   </body>

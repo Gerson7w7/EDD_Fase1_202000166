@@ -98,7 +98,7 @@ function graficarListaDoble() {
         lista.dot = '{';
         lista.dotgen();
         lista.dot += '}';
-                                             
+
         let row = document.getElementById('tablaCliente')
         row.innerHTML = '<thead><tr><th scope="col">ID</th><th scope="col">Nombre</th><th scope="col">Correo</th></tr></thead>'
         let aux = lista.primero;
@@ -134,6 +134,65 @@ function graficarListaDoble() {
     });
 }
 
+function graficarMatrix() {
+    let s = new Serealizacion();
+    let arbolVendedores = new AVL();
+    arbolVendedores = s.deserealizar(arbolVendedores, 'v');
+    arbolVendedores.deserealizarEDD()
+    let inner1 = '';
+    inner1 = op(inner1, arbolVendedores.raiz);
+    document.getElementById('idVendedor').innerHTML = inner1;
+
+    let form = document.getElementById('gCalendario');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        let id = document.getElementById('idVendedor').value;
+        let mes = document.getElementById('mes').value;
+        console.log(id)
+        console.log(mes)
+        // lista con los meses y matrices
+        let lista = new ListaDoble();
+        Object.assign(lista, arbolVendedores.retornarListaMeses(parseInt(id), lista, arbolVendedores.raiz));
+        let aux = lista.primero;
+        while (aux != null) {
+            if (aux.dato == parseInt(mes)) {
+                let matrix = new Matrix();
+                Object.assign(matrix, aux.matrix);
+                matrix.dot = '{';
+                matrix.dotgen();
+                matrix.dot += '}';
+                // usando la librería de vis-network
+                let container = document.getElementById("grafCalendario");
+                let DOTstring = matrix.dot;
+                let parsedData = vis.parseDOTNetwork(DOTstring);
+                let data = {
+                    nodes: parsedData.nodes,
+                    edges: parsedData.edges
+                }
+                let options = {
+                    nodes: {
+                        widthConstraint: 20,
+                    },
+                    layout: {
+                        hierarchical: {
+                            levelSeparation: 100,
+                            nodeSpacing: 100,
+                            parentCentralization: true,
+                            direction: 'UD',        // UD, DU, LR, RL
+                            sortMethod: 'directed',  // hubsize, directed
+                            shakeTowards: 'roots'  // roots, leaves                        
+                        },
+                    },
+                };
+                let network = new vis.Network(container, data, options);
+                matrix.graficarMatriz();
+                break;
+            }
+            aux = aux.siguiente;
+        }
+    });
+}
+
 function op(inner, aux) {
     if (aux != null) {
         inner = this.op(inner, aux.izq);
@@ -166,3 +225,4 @@ function tablaABB(inner, aux) {
 graficarAVL();
 graficarABB();
 graficarListaDoble();
+graficarMatrix();
