@@ -110,6 +110,17 @@ class AVL {
         } 
     }
 
+    // método para eliminar un cliente a un vendedor
+    deleteCliente(idUser, idClient, aux){
+        if(aux != null){
+            this.deleteCliente(idUser, idClient, aux.izq);
+            if(aux.dato.id == idUser){ // si encuentra el id del vendedor            
+                aux.dato.lClientes.delete(idClient);
+            }
+            this.deleteCliente(idUser, idClient, aux.der);
+        } 
+    }
+
     // método para guardar las lista de meses para los eventos
     addListaEventos(id, lista, aux){
         if(aux != null){

@@ -59,6 +59,7 @@ function graficarMatrix() {
         if (aux.dato == parseInt(mes)) {
             let matrix = new Matrix();
             Object.assign(matrix, aux.matrix);
+            document.getElementById('graphviz').innerHTML = matrix.graficarMatriz()
             matrix.dot = '{';
             matrix.dotgen();
             matrix.dot += '}';

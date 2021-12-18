@@ -61,7 +61,15 @@ class ListaDoble {
     }
 
     delete(id){
-
+        let aux = this.primero;
+        while(aux != null){
+            if(aux.dato.id == id){
+                // eliminando la referencia de este nodo
+                aux.anterior.siguiente = aux.siguiente;
+                aux.siguiente.anterior = aux.anterior;
+            }
+            aux = aux.siguiente;
+        }
     }
 
     // método para guardar la matriz con los eventos 
