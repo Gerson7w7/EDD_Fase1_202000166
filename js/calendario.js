@@ -16,8 +16,8 @@ function registrar(){
         let hora = document.getElementById('hora').value;
         let desc = document.getElementById('desc').value;
         // actualizando el arbol de vendedores en el local storage
-        arbolVendedores.addMes(usuario, mes, arbolVendedores.raiz);
-        arbolVendedores.addMatrixEventos(usuario, mes, desc, dia, hora, arbolVendedores.raiz);
+        arbolVendedores.addMes(usuario, parseInt(mes), arbolVendedores.raiz);
+        arbolVendedores.addMatrixEventos(usuario, parseInt(mes), desc, parseInt(dia), parseInt(hora), arbolVendedores.raiz);
         localStorage.setItem('arbolVendedores', CircularJSON.stringify(arbolVendedores));
         document.getElementById('notificacionRE').innerHTML = 'Se ha registrado el evento! :D';
     });

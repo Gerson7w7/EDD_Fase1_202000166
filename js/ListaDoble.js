@@ -11,6 +11,7 @@ class ListaDoble {
     constructor(){
         this.primero = null;
         this.size = 0;
+        this.dot = '';
     }
 
     add(dato){
@@ -79,6 +80,7 @@ class ListaDoble {
         let s = new Serealizacion();
         while(aux != null){
             aux.matrix = s.cambiazo(new Matrix(), aux.matrix);
+            aux.matrix.deserealizarEDD();
             aux = aux.siguiente;
         } 
     }
@@ -111,6 +113,17 @@ class ListaDoble {
             if (aux.anterior != null){
                 console.log('->anterior ' + aux.anterior.dato);
             }         
+            aux = aux.siguiente;
+        }
+    }
+
+    // graficando lista
+    dotgen() {
+        let aux = this.primero;
+        while(aux != null){
+            if(aux.siguiente != null){
+                this.dot += aux.dato.id + '--' + aux.siguiente.dato.id + ';';
+            }    
             aux = aux.siguiente;
         }
     }

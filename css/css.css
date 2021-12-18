@@ -72,10 +72,11 @@
     justify-content: center;
 }
 
-.fondo {
+.grafica {
     background-color: white;
     color: black;
-    border-radius: 10px;
+    border-radius: 15px;
+    height: 25rem;
 }
 .user {
     color: rgb(0, 0, 0);

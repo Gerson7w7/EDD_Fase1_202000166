@@ -146,8 +146,6 @@ class AVL {
     buscar(username, password, aux, usuario){
         if(aux != null){
             usuario = this.buscar(username, password, aux.izq, usuario);
-            // console.log('nombre: ' + aux.dato.username + ' password: ' + aux.dato.password)
-            // console.log('nombre: ' + username + ' password: ' + password)
             if(aux.dato.username == username && aux.dato.password == password){
                 console.log('nombre: ' + aux.dato.username + ' password: ' + aux.dato.password)
                 return aux.dato;
@@ -155,6 +153,18 @@ class AVL {
             usuario = this.buscar(username, password, aux.der, usuario);
         } 
         return usuario;
+    }
+
+    retornarListaClientes(username, lista, aux){
+        if(aux != null){
+            lista =  this.retornarListaClientes(username, lista, aux.izq);
+            if(username == aux.dato.id){
+                console.log(aux.dato.lClientes)
+                return aux.dato.lClientes;
+            }
+            lista = this.retornarListaClientes(username, lista, aux.der);
+        } 
+        return lista;
     }
 
     // rotación izquierda derecha
@@ -179,12 +189,11 @@ class AVL {
             let s = new Serealizacion();
             if(aux.dato.lClientes != null){
                 aux.dato.lClientes = s.cambiazo(new ListaDoble(), aux.dato.lClientes);
-                console.log('estoy aki')
-                aux.dato.lClientes.mostrar(); 
+                // aux.dato.lClientes.mostrar(); 
             }if(aux.dato.eventos.primero != null){
                 aux.dato.eventos = s.cambiazo(new ListaDoble(), aux.dato.eventos);
                 aux.dato.eventos.deserealizarEDD();
-                aux.dato.eventos.mostrar2(); 
+                // aux.dato.eventos.mostrar2(); 
             } 
             this.deserealizarEDD(aux.der);
         } 
@@ -214,6 +223,20 @@ class AVL {
             this.postOrder(aux.izq);
             this.postOrder(aux.der);
             console.log(aux.dato.id);
+        }
+    }
+
+    // graficando arbol
+    dotgen(aux) {
+        if (aux != null) {
+            if (aux.izq != null){
+                this.dot += aux.dato.id + '--' + aux.izq.dato.id + ';';
+            } 
+            if (aux.der != null){
+                this.dot += aux.dato.id + '--' + aux.der.dato.id + ';';
+            } 				
+            this.dotgen(aux.izq);
+            this.dotgen(aux.der);
         }
     }
 }

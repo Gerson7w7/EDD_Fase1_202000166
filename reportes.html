@@ -39,13 +39,13 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="regEmpleado.html"
-                ><span><i class="fas fa-id-card"></i></span> Registrar
+                ><span><i class="fas fa-id-card"></i></span> Administración
                 Usuario</a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="regProveedor.html"
-                ><span><i class="fas fa-person-carry"></i></span> Registrar
+                ><span><i class="fas fa-person-carry"></i></span> Administración
                 Proveedor</a
               >
             </li>
@@ -56,7 +56,7 @@
             </li>
           </ul>
           <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-warning">Cerrar sesión</button>
+            <button type="button" onclick="window.location.href = './index.html';" class="btn btn-warning">Cerrar sesión</button>
           </div>
         </div>
         <div class="col-9">
@@ -95,12 +95,43 @@
                 <div>
                   <div class="d-flex justify-content-center"><h2>Usuarios</h2></div>               
                 </div>
+                <div id="grafUsuarios" class="grafica"></div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaUsuarios" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Password</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
               </p>
             </div>
             <div class="tab-pane fade" id="rProveedor">
               <p>
                 <div>
                   <div class="d-flex justify-content-center"><h2>Proveedores</h2></div>               
+                </div>
+                <div id="grafProveedores" class="grafica"></div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaProveedores" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Correo</th>
+                      </tr>
+                    </thead>
+                  </table>
                 </div>
               </p>
             </div>
@@ -126,6 +157,8 @@
                       </div>   
                     </form>
                   </div> 
+                  <br>
+                  <div id="grafCalendario" class="grafica"></div>
                 </div>
               </p>
             </div>
@@ -134,15 +167,19 @@
                 <div>
                   <div class="d-flex justify-content-center"><h2>Clientes</h2></div>
                   <div class="d-flex justify-content-center">
-                    <form>
+                    <form id="gCliente">
                       <div class="form-group">
-                        <label for="idCliente" class="form-label">ID del cliente</label>
-                        <select class="form-select" id="idCliente">
-                          <option>1</option>
-                        </select>
+                        <label for="idCliente" class="form-label">ID del vendedor</label>
+                        <select class="form-select" id="idCliente"></select>
                       </div>
                     </form>
                   </div> 
+                  <br>
+                  <div id="grafClientes" class="grafica"></div>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaCliente" class="table table-hover"></table>
                 </div>
               </p>
             </div>            
@@ -151,6 +188,14 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/Clases.js"></script>
+    <script type="text/javascript" src="./js/vis-network.min.js"></script>
+    <script type="text/javascript" src="./js/circular-json.js"></script>
+    <script type="text/javascript" src="./js/Serealizacion.js"></script>
+    <script type="text/javascript" src="./js/AVL.js"></script>
+    <script type="text/javascript" src="./js/ABB.js"></script>
+    <script type="text/javascript" src="./js/ListaDoble.js"></script>
+    <script type="text/javascript" src="./js/reportes.js"></script>
   </body>
 </html>
 

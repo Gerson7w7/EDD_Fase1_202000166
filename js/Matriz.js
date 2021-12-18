@@ -206,6 +206,12 @@ class Matrix{
         nodoY.listaDatos.addY(dato, x, y);
     }
 
+    deserealizarEDD(){
+        let s = new Serealizacion();
+        this.cabeceraX = s.cambiazo(new ListaCabecera(), this.cabeceraX);  
+        this.cabeceraY = s.cambiazo(new ListaCabecera(), this.cabeceraY);  
+    }
+
     recorrerMatrix(){
         // recorremos la cabecera de x y sus listas internas
         console.log('==== Cabeceras X ====');

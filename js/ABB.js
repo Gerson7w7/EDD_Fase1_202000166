@@ -9,6 +9,7 @@ class NodoABB{
 class ABB{
     constructor(){
         this.raiz = null;
+        this.dot = '';
     }
 
     add(dato){
@@ -59,6 +60,20 @@ class ABB{
             this.postOrder(aux.izquierda);
             this.postOrder(aux.derecha);
             console.log(aux.dato);
+        }
+    }
+
+    // graficando arbol
+    dotgen(aux) {
+        if (aux != null) {
+            if (aux.izquierda != null){
+                this.dot += aux.dato.id + '--' + aux.izquierda.dato.id + ';';
+            } 
+            if (aux.derecha != null){
+                this.dot += aux.dato.id + '--' + aux.derecha.dato.id + ';';
+            } 				
+            this.dotgen(aux.izquierda);
+            this.dotgen(aux.derecha);
         }
     }
 }

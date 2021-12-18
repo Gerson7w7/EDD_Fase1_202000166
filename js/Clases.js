@@ -13,7 +13,7 @@ class Vendedor {
         this.edad = edad;
         this.correo = correo;
         this.password = password;
-        this.lClientes = null;
+        this.lClientes = new ListaDoble();
         this.eventos = new ListaDoble();
     }
 }
