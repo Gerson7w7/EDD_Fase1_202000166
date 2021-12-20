@@ -67,6 +67,7 @@ class ListaDoble {
                 // eliminando la referencia de este nodo
                 aux.anterior.siguiente = aux.siguiente;
                 aux.siguiente.anterior = aux.anterior;
+                this.size--;
             }
             aux = aux.siguiente;
         }

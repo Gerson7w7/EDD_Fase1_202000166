@@ -22,4 +22,46 @@ function registrar(){
     });
 }
 
+function eliminar(){
+    let form = document.getElementById('delProveedor');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        // deserealizando a los clientes
+        let s = new Serealizacion();
+        let arbolProveedores = new ABB();
+        arbolProveedores = s.deserealizar(arbolProveedores, 'p');
+        // obteniendo el id del vendedor que se quiere eliminar
+        let id = document.getElementById('idProveedor').value;
+        // eliminando el cliente
+        arbolProveedores.delete(parseInt(id));
+        localStorage.setItem('arbolProveedores', CircularJSON.stringify(arbolProveedores));
+        document.getElementById('notificacionEP').innerHTML = 'Se ha eliminado el proveedor correctamente.';
+    });
+}
+
+function setProveedores(){
+    // deserealizando a los vendedores
+    let s = new Serealizacion();
+    let arbolProveedores = new ABB();
+    arbolProveedores = s.deserealizar(arbolProveedores, 'p');
+
+    //arbolProveedores.inOrder(arbolProveedores.raiz)
+    // poniendo los id de los vendedores en un select del html
+    let inner = '';
+    inner = op(inner, arbolProveedores.raiz);
+    console.log(inner)
+    document.getElementById('idProveedor').innerHTML = inner;
+}
+
+function op(inner, aux) {
+    if (aux != null) {
+        inner = this.op(inner, aux.izquierda);
+        inner += '<option>' + aux.dato.id + '</option>';
+        console.log(aux.dato.id)
+        inner = this.op(inner, aux.derecha);
+    }
+    return inner;
+}
+
 registrar();
+eliminar();

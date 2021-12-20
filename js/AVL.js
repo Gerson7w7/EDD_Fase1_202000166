@@ -50,6 +50,70 @@ class AVL {
         return aux;
     }
 
+    delete(dato){
+        this.raiz = this.delete2(dato, this.raiz);
+    }
+
+    // no se autobalancean
+    delete2(dato, aux){
+        if(aux.dato.id == dato){ // si el dato es igual al nodo
+            if(aux.izq == null){ // si no tiene hijos izq, no se debe de intercambiar
+                if(aux.der == null){ // si no tiene hijos der, es una hoja
+                    return null;
+                }else{
+                    aux = aux.der; // su hijo der pasa a ser el nuevo aux                  
+                }
+            }else{ // si tiene hijos izq, hay que hacer un intercambio
+                let auxIzq = aux.izq;
+                let auxDer = aux.der;
+                aux = this.intercambio(aux.izq);
+                if(aux != auxIzq){
+                    aux.izq = auxIzq;
+                    aux.der = auxDer;
+                }else{
+                    aux.der = auxDer;
+                }         
+            }    
+        }else if(dato < aux.dato.id){ // si el dato es menor que el nodo
+            aux.izq = this.delete2(dato, aux.izq);
+            // verificando la equivalencia mediante alturas
+            if(this.altura(aux.izq) - this.altura(aux.der) == 2){
+                if(dato < aux.izq.dato.id){ // rotación izquierda-izquierda
+                    aux = this.rii(aux);
+                }else{ // rotación izquierda derecha
+                    aux = this.rid(aux);
+                }
+            } 
+        }else if(dato > aux.dato.id){ // si el dato es mayor que el nodo
+            aux.der = this.delete2(dato, aux.der);
+            // verificando la equivalencia mediante alturas
+            if(this.altura(aux.izq) - this.altura(aux.der) == -2){
+                if(dato > aux.der.dato.id){ // rotación derecha-derecha
+                    aux = this.rdd(aux);
+                }else{ // rotación derecha izquierda
+                    aux = this.rdi(aux);
+                }
+            } 
+        }
+        // alturas o profundidad de las ramas izq y der
+        let hIzq = this.altura(aux.izq);
+        let hDer = this.altura(aux.der);
+        aux.altura = this.hMax(hIzq, hDer) + 1;
+        // retornando el arbol rotado
+        return aux;
+    }
+
+    intercambio(aux){
+        if(aux.der != null){
+            let der = aux.der;
+            if(aux.der.der == null){
+                aux.der = null;
+            }
+            aux = this.intercambio(der);        
+        }
+        return aux;
+    }
+
     altura(aux){ // retorna la altura del nodo
         if(aux == null){
             return -1;

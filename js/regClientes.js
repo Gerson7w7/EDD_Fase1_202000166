@@ -39,7 +39,7 @@ function eliminar(){
         // eliminando el cliente
         cliente = arbolVendedores.deleteCliente(usuario, parseInt(id), arbolVendedores.raiz);
         localStorage.setItem('arbolVendedores', CircularJSON.stringify(arbolVendedores));
-        document.getElementById('notificacionEU').innerHTML = 'Se ha eliminado el usuario correctamente.';
+        document.getElementById('notificacionEU').innerHTML = 'Se ha eliminado el cliente correctamente.';
     });
 }
 

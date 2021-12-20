@@ -20,7 +20,7 @@ class Serealizacion {
                     let cliente = new Cliente(parseInt(c.id), c.nombre, c.correo);
                     lClientes.add(cliente);
                 });
-                arbolVendedores.addListaClientes(v.id, lClientes, arbolVendedores.raiz);
+                arbolVendedores.addListaClientes(parseInt(v.id), lClientes, arbolVendedores.raiz);
             });
             localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores)); // ===================posiblemente pueda ir de los else if
             notificacion.innerHTML = 'Se ha cargado exitosamente los Clientes! :D'
@@ -33,10 +33,10 @@ class Serealizacion {
                 v.eventos.forEach((e) => {
                     lEventos.add(e.mes);
                 });
-                arbolVendedores.addListaEventos(v.id, lEventos, arbolVendedores.raiz);
+                arbolVendedores.addListaEventos(parseInt(v.id), lEventos, arbolVendedores.raiz);
                 // ahora guardamos las matrices (eventos)
                 v.eventos.forEach((e) => {
-                    arbolVendedores.addMatrixEventos(v.id, e.mes, e.desc, e.dia, e.hora, arbolVendedores.raiz);
+                    arbolVendedores.addMatrixEventos(parseInt(v.id), parseInt(e.mes), e.desc, parseInt(e.dia), parseInt(e.hora), arbolVendedores.raiz);
                 });   
             });
             localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores));
@@ -45,7 +45,7 @@ class Serealizacion {
             let arbolProveedores = new ABB();
             // creando los proveedores y guardándolos en el local storage
             objects.proveedores.forEach((p)=> {
-                let proveedor = new Proveedor(p.id, p.nombre, p.direccion, p.telefono, p.correo);
+                let proveedor = new Proveedor(parseInt(p.id), p.nombre, p.direccion, p.telefono, p.correo);
                 arbolProveedores.add(proveedor);
             })
             localStorage.setItem('arbolProveedores', CircularJSON.stringify(arbolProveedores));

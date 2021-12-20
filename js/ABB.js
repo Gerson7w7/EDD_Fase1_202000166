@@ -39,6 +39,50 @@ class ABB{
         }
     }
 
+    delete(dato){
+        this.raiz = this.delete2(dato, this.raiz);
+    }
+
+    // no se autobalancean
+    delete2(dato, aux){
+        if(aux.dato.id == dato){ // si el dato es igual al nodo
+            if(aux.izquierda == null){ // si no tiene hijos izq, no se debe de intercambiar
+                if(aux.derecha == null){ // si no tiene hijos der, es una hoja
+                    return null;
+                }else{
+                    aux = aux.derecha; // su hijo der pasa a ser el nuevo aux                  
+                }
+            }else{ // si tiene hijos izq, hay que hacer un intercambio
+                let auxIzq = aux.izquierda;
+                let auxDer = aux.derecha;
+                aux = this.intercambio(aux.izquierda);
+                if(aux != auxIzq){
+                    aux.izquierda = auxIzq;
+                    aux.derecha = auxDer;
+                }else{
+                    aux.derecha = auxDer;
+                }         
+            }    
+        }else if(dato < aux.dato.id){ // si el dato es menor que el nodo
+            aux.izquierda = this.delete2(dato, aux.izquierda);
+        }else if(dato > aux.dato.id){ // si el dato es mayor que el nodo
+            aux.derecha = this.delete2(dato, aux.derecha);
+        }
+        // retornando el arbol
+        return aux;
+    }
+
+    intercambio(aux){
+        if(aux.derecha != null){
+            let der = aux.derecha;
+            if(aux.derecha.derecha == null){
+                aux.derecha = null;
+            }
+            aux = this.intercambio(der);        
+        }
+        return aux;
+    }
+
     preOrder(aux){
         if(aux != null){
             console.log(aux.dato);
@@ -50,7 +94,7 @@ class ABB{
     inOrder(aux){
         if(aux != null){          
             this.inOrder(aux.izquierda);
-            console.log(aux.dato);
+            console.log(aux.dato.id);
             this.inOrder(aux.derecha);
         }
     }
