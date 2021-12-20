@@ -138,4 +138,19 @@ class ListaDoble {
             aux = aux.siguiente;
         }
     }
+
+    graphviz(){
+        let cadena = "digraph lista {<br>\n";
+        cadena +="<br>\n";
+        let aux = this.primero;
+        while(aux != null){
+            if(aux.siguiente != null){
+                cadena += aux.dato.id + "->" + aux.siguiente.dato.id + "<br>\n";
+                cadena += aux.siguiente.dato.id + "->" + aux.dato.id + "<br>\n";               
+            }
+            aux = aux.siguiente;
+        }
+        cadena +="<br>\n}";
+        return cadena;
+    }
 }

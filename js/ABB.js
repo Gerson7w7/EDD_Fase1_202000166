@@ -120,4 +120,39 @@ class ABB{
             this.dotgen(aux.derecha);
         }
     }
+
+    graphviz(){
+        let cadena = "digraph arbol {<br>\n";
+        cadena += this.nodosGraphviz(this.raiz);
+        cadena +="<br>\n";
+        cadena +=this.enlazarGraphviz(this.raiz);
+        cadena +="<br>\n}";
+        return cadena;
+    }
+
+    nodosGraphviz(aux){ //metodo preorden
+        let nodos = "";
+        if(aux != null){
+            nodos += "n" + aux.dato.id + "[label=\"" + aux.dato.id + "\"]<br>\n";
+            nodos += this.nodosGraphviz(aux.izquierda);
+            nodos += this.nodosGraphviz(aux.derecha);
+        }
+        return nodos;
+    }
+
+    enlazarGraphviz(aux){
+        let cadena = "";
+        if(aux != null){
+            cadena += this.enlazarGraphviz(aux.izquierda);
+            cadena += this.enlazarGraphviz(aux.derecha);
+            //validaciones
+            if(aux.izquierda != null){
+                cadena += "n" + aux.dato.id + "-> n" + aux.izquierda.dato.id + "<br>\n";
+            }
+            if(aux.derecha != null){
+                cadena += "n" + aux.dato.id + "-> n" + aux.derecha.dato.id + "<br>\n";
+            }       
+        }
+        return cadena;
+    }  
 }

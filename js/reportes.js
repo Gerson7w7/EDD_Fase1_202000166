@@ -3,6 +3,7 @@ function graficarAVL() {
     let arbolVendedores = new AVL();
 
     arbolVendedores = s.deserealizar(arbolVendedores, 'v');
+    document.getElementById('graphvizU').innerHTML = arbolVendedores.graphviz()
     arbolVendedores.dot = '{'
     arbolVendedores.dotgen(arbolVendedores.raiz);
     arbolVendedores.dot += '}'
@@ -43,6 +44,7 @@ function graficarABB() {
     let arbolProveedores = new ABB();
 
     arbolProveedores = s.deserealizar(arbolProveedores, 'p');
+    document.getElementById('graphvizP').innerHTML = arbolProveedores.graphviz()
     arbolProveedores.dot = '{'
     arbolProveedores.dotgen(arbolProveedores.raiz);
     arbolProveedores.dot += '}'
@@ -95,6 +97,7 @@ function graficarListaDoble() {
 
         let lista = new ListaDoble();
         Object.assign(lista, arbolVendedores.retornarListaClientes(parseInt(id), lista, arbolVendedores.raiz));
+        document.getElementById('graphvizC').innerHTML = lista.graphviz();
         lista.dot = '{';
         lista.dotgen();
         lista.dot += '}';

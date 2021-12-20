@@ -234,7 +234,6 @@ class AVL {
         if(aux != null){
             lista =  this.retornarListaClientes(username, lista, aux.izq);
             if(username == aux.dato.id){
-                console.log(aux.dato.lClientes)
                 return aux.dato.lClientes;
             }
             lista = this.retornarListaClientes(username, lista, aux.der);
@@ -324,5 +323,40 @@ class AVL {
             this.dotgen(aux.izq);
             this.dotgen(aux.der);
         }
+    }
+
+    graphviz(){
+        let cadena = "digraph arbol {<br>\n";
+        cadena += this.nodosGraphviz(this.raiz);
+        cadena +="<br>\n";
+        cadena +=this.enlazarGraphviz(this.raiz);
+        cadena +="<br>\n}";
+        return cadena;
+    }
+
+    nodosGraphviz(aux){ //metodo preorden
+        let nodos = "";
+        if(aux != null){
+            nodos += "n" + aux.dato.id + "[label=\"" + aux.dato.id + "\"]<br>\n";
+            nodos += this.nodosGraphviz(aux.izq);
+            nodos += this.nodosGraphviz(aux.der);
+        }
+        return nodos;
+    }
+
+    enlazarGraphviz(aux){
+        let cadena = "";
+        if(aux != null){
+            cadena += this.enlazarGraphviz(aux.izq);
+            cadena += this.enlazarGraphviz(aux.der);
+            //validaciones
+            if(aux.izq != null){
+                cadena += "n" + aux.dato.id + "-> n" + aux.izq.dato.id + "<br>\n";
+            }
+            if(aux.der != null){
+                cadena += "n" + aux.dato.id + "-> n" + aux.der.dato.id + "<br>\n";
+            }       
+        }
+        return cadena;
     }
 }
