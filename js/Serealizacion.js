@@ -22,7 +22,7 @@ class Serealizacion {
                 });
                 arbolVendedores.addListaClientes(parseInt(v.id), lClientes, arbolVendedores.raiz);
             });
-            localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores)); // ===================posiblemente pueda ir de los else if
+            localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores));
             notificacion.innerHTML = 'Se ha cargado exitosamente los Clientes! :D'
 
         } else if (tipo == "Eventos") {
@@ -56,8 +56,37 @@ class Serealizacion {
                 let vendedor = new Vendedor(parseInt(v.id), v.nombre, v.username, parseInt(v.edad), v.correo, v.password);
                 arbolVendedores.add(vendedor);
             });
-            localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores)); // ===================posiblemente pueda ir de los else if
+            localStorage.setItem("arbolVendedores", CircularJSON.stringify(arbolVendedores));
             notificacion.innerHTML = 'Se ha cargado exitosamente los Vendedores! :D'
+        } else if (tipo == "Inventario") {
+            let arbolInventario = new ArbolB();
+            // creando los productos y guardándolos en el local storage
+            objects.productos.forEach((p) =>{
+                arbolInventario.add(new Producto(parseInt(p.id), p.nombre, parseFloat(p.precio), parseInt(p.cantidad)));
+            });
+            localStorage.setItem("arbolInventario", CircularJSON.stringify(arbolInventario));
+            notificacion.innerHTML = 'Se ha cargado exitosamente el Inventario! :D'
+        } else if (tipo == "Facturas") {
+            let arbolInventario = new ArbolB();
+            // deserealizando
+            arbolInventario = this.deserealizar(arbolInventario, "i");
+            arbolInventario.raiz = arbolInventario.deserealizarEDD(arbolInventario.raiz);
+
+            let hashProductos = new TablaHash();
+            // creando los productos y guardándolos en el local storage
+            objects.ventas.forEach((v) =>{
+                let factura = new Factura(v.vendedor, v.cliente);
+                v.productos.forEach((p) =>{
+                    let producto;
+                    producto = arbolInventario.buscar(p.id, arbolInventario.raiz, producto);
+                    producto.cantidad = p.cantidad;
+                    factura.productos.add(producto)
+                });
+                factura.total = factura.productos.totalProductos(); 
+                hashProductos.add(new NodoHash(factura));
+            });
+            localStorage.setItem("hashProductos", CircularJSON.stringify(hashProductos));
+            notificacion.innerHTML = 'Se ha cargado exitosamente las facturas! :D'
         }
     }
 
@@ -68,6 +97,10 @@ class Serealizacion {
             json = CircularJSON.parse(localStorage.getItem("arbolVendedores"));
         }else if (tipo == "p") {
             json = CircularJSON.parse(localStorage.getItem("arbolProveedores"));
+        }else if (tipo == "i") {
+            json = CircularJSON.parse(localStorage.getItem("arbolInventario"));
+        }else if (tipo == "f") {
+            json = CircularJSON.parse(localStorage.getItem("hashProductos"));
         }
         tipoObjeto = this.cambiazo(tipoObjeto, json);
         return tipoObjeto;

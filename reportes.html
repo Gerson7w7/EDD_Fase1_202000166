@@ -50,6 +50,11 @@
               >
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="regProducto.html"
+                ><span><i class="fas fa-dolly-flatbed-alt"></i></span> Agregar Producto</a
+              >
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="reportes.html"
                 ><span><i class="fas fa-chart-pie"></i></span> Reportes</a
               >
@@ -86,6 +91,16 @@
             <li class="nav-item tab">
               <a class="nav-link" data-bs-toggle="tab" href="#rCliente"
                 ><span><i class="fas fa-address-book"></i></span> Clientes</a
+              >
+            </li>
+            <li class="nav-item tab">
+              <a class="nav-link" data-bs-toggle="tab" href="#rInventario"
+                ><span><i class="fas fa-truck-moving"></i></span> Inventario</a
+              >
+            </li>
+            <li class="nav-item tab">
+              <a class="nav-link" data-bs-toggle="tab" href="#rFactura"
+                ><span><i class="fas fa-file-invoice-dollar"></i></span> Facturas</a
               >
             </li>
           </ul>
@@ -195,7 +210,56 @@
                 <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
                 <div id="graphvizC" class="d-flex justify-content-evenly"></div>
               </p>
-            </div>            
+            </div>  
+            <div class="tab-pane fade" id="rInventario">
+              <p>
+                <div>
+                  <div class="d-flex justify-content-center"><h2>Inventario</h2></div>               
+                </div>
+                <div id="grafInventario" class="grafica"></div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaInventario" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
+                <div id="graphvizI" class="d-flex justify-content-evenly"></div>
+              </p>
+            </div>
+            <div class="tab-pane fade" id="rFactura">
+              <p>
+                <div>
+                  <div class="d-flex justify-content-center"><h2>Facturas</h2></div>               
+                </div>
+                <div id="grafFactura" class="grafica"></div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaFactura" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID Venta</th>
+                        <th scope="col">Vendedor</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Productos</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
+                <div id="graphvizF" class="d-flex justify-content-evenly"></div>
+              </p>
+            </div>              
           </div>   
         </div>
       </div>
@@ -207,6 +271,8 @@
     <script type="text/javascript" src="./js/Serealizacion.js"></script>
     <script type="text/javascript" src="./js/AVL.js"></script>
     <script type="text/javascript" src="./js/ABB.js"></script>
+    <script type="text/javascript" src="./js/B.js"></script>
+    <script type="text/javascript" src="./js/TablaHash.js"></script>
     <script type="text/javascript" src="./js/Matriz.js"></script>
     <script type="text/javascript" src="./js/ListaDoble.js"></script>
     <script type="text/javascript" src="./js/reportes.js"></script>

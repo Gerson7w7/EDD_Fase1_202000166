@@ -127,6 +127,16 @@ class ListaDoble {
         }
     }
 
+    totalProductos(){
+        let total = 0;
+        let aux = this.primero;
+        while(aux != null){
+            total += aux.dato.precio * aux.dato.cantidad;
+            aux = aux.siguiente;
+        }
+        return total;
+    }
+
     // graficando lista
     dotgen() {
         let aux = this.primero;

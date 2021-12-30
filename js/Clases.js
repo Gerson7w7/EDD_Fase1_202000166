@@ -35,3 +35,22 @@ class Proveedor {
         this.correo = correo;
     }
 }
+
+class Producto {
+    constructor(id, nombre, precio, cantidad){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+}
+
+class Factura{
+    constructor(nVendedor, nCliente){
+        this.idVenta = 0;
+        this.nVendedor = nVendedor;
+        this.nCliente = nCliente;
+        this.total = 0;
+        this.productos = new ListaDoble();
+    }
+}

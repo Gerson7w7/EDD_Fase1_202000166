@@ -1,0 +1,72 @@
+{
+    "ventas": [
+        {
+            "vendedor": "vendedor1",
+            "cliente": "cliente1",
+            "productos": [
+                {
+                    "id": 111,
+                    "cantidad": 3
+                },
+                {
+                    "id": 112,
+                    "cantidad": 1
+                }
+            ]
+        },
+        {
+            "vendedor": "vendedor2",
+            "cliente": "cliente2",
+            "productos": [
+                {
+                    "id": 113,
+                    "cantidad": 10
+                },
+                {
+                    "id": 114,
+                    "cantidad": 2
+                },
+                {
+                    "id": 115,
+                    "cantidad": 7
+                }
+            ]
+        },
+        {
+            "vendedor": "vendedor3",
+            "cliente": "cliente3",
+            "productos": [
+                {
+                    "id": 116,
+                    "cantidad": 10
+                },
+                {
+                    "id": 117,
+                    "cantidad": 2
+                },
+                {
+                    "id": 118,
+                    "cantidad": 7
+                }
+            ]
+        },
+        {
+            "vendedor": "vendedor4",
+            "cliente": "cliente4",
+            "productos": [
+                {
+                    "id": 119,
+                    "cantidad": 10
+                },
+                {
+                    "id": 120,
+                    "cantidad": 2
+                },
+                {
+                    "id": 121,
+                    "cantidad": 7
+                }
+            ]
+        }
+    ]
+}
