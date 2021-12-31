@@ -87,13 +87,24 @@ class Serealizacion {
             });
             localStorage.setItem("hashProductos", CircularJSON.stringify(hashProductos));
             notificacion.innerHTML = 'Se ha cargado exitosamente las facturas! :D'
+        } else if (tipo == "Rutas") {
+            let grafoRutas = new Grafo();
+            // creando las rutas y guardándolos en el local storage
+            objects.rutas.forEach((r) =>{
+                grafoRutas.add(new Ruta(parseInt(r.id), r.nombre, 0));
+                r.adyacentes.forEach((a) =>{
+                    grafoRutas.addAdyacente(parseInt(r.id), new Ruta(a.id, a.nombre, a.distancia), a.distancia);
+                });
+            });
+            localStorage.setItem("grafoRutas", CircularJSON.stringify(grafoRutas));
+            notificacion.innerHTML = 'Se ha cargado exitosamente las rutas! :D'
         }
     }
 
+    // método para deserealizar las estructuras
     deserealizar(tipoObjeto, tipo) {
         let json;
         if(tipo == "v") {
-            // deserealizando los vendedores
             json = CircularJSON.parse(localStorage.getItem("arbolVendedores"));
         }else if (tipo == "p") {
             json = CircularJSON.parse(localStorage.getItem("arbolProveedores"));
@@ -101,6 +112,8 @@ class Serealizacion {
             json = CircularJSON.parse(localStorage.getItem("arbolInventario"));
         }else if (tipo == "f") {
             json = CircularJSON.parse(localStorage.getItem("hashProductos"));
+        }else if (tipo == "r") {
+            json = CircularJSON.parse(localStorage.getItem("grafoRutas"));
         }
         tipoObjeto = this.cambiazo(tipoObjeto, json);
         return tipoObjeto;

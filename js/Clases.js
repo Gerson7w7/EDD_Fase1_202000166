@@ -54,3 +54,13 @@ class Factura{
         this.productos = new ListaDoble();
     }
 }
+
+class Ruta{
+    constructor(id, nombre, distancia){
+        this.id = id;
+        this.nombre = nombre;
+        this.distancia = distancia;
+        this.camino = null;
+        this.acumulado = this.distancia;
+    }
+}

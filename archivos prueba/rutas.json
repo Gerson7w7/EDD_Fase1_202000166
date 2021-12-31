@@ -7,7 +7,7 @@
                 {
                     "id": 3,
                     "nombre": "bodega3",
-                    "distancia": 15
+                    "distancia": 3
                 },
                 {
                     "id": 5,
@@ -23,11 +23,16 @@
                 {
                     "id": 3,
                     "nombre": "bodega3",
-                    "distancia": 5
+                    "distancia": 2
                 },
                 {
                     "id": 4,
                     "nombre": "bodega4",
+                    "distancia": 1
+                },
+                {
+                    "id": 5,
+                    "nombre": "bodega5",
                     "distancia": 2
                 }
             ]
@@ -39,12 +44,59 @@
                 {
                     "id": 1,
                     "nombre": "bodega1",
-                    "distancia": 15
+                    "distancia": 3
                 },
                 {
                     "id": 2,
                     "nombre": "bodega2",
+                    "distancia": 2
+                },
+                {
+                    "id": 5,
+                    "nombre": "bodega5",
+                    "distancia": 8
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "nombre": "bodega4",
+            "adyacentes": [
+                {
+                    "id": 2,
+                    "nombre": "bodega2",
+                    "distancia": 1
+                },
+                {
+                    "id": 5,
+                    "nombre": "bodega5",
+                    "distancia": 2
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "nombre": "bodega5",
+            "adyacentes": [
+                {
+                    "id": 3,
+                    "nombre": "bodega3",
+                    "distancia": 8
+                },
+                {
+                    "id": 1,
+                    "nombre": "bodega1",
                     "distancia": 5
+                },
+                {
+                    "id": 4,
+                    "nombre": "bodega4",
+                    "distancia": 2
+                },
+                {
+                    "id": 2,
+                    "nombre": "bodega4",
+                    "distancia": 2
                 }
             ]
         }

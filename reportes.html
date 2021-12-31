@@ -103,6 +103,16 @@
                 ><span><i class="fas fa-file-invoice-dollar"></i></span> Facturas</a
               >
             </li>
+            <li class="nav-item tab">
+              <a class="nav-link" data-bs-toggle="tab" href="#rRuta"
+                ><span><i class="fas fa-map-marked-alt"></i></span> Rutas</a
+              >
+            </li>
+            <li class="nav-item tab">
+              <a class="nav-link" data-bs-toggle="tab" href="#rRutaOptima"
+                ><span><i class="fas fa-route"></i></span> Ruta Optima</a
+              >
+            </li>
           </ul>
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active show" id="rUsuario">
@@ -259,7 +269,75 @@
                 <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
                 <div id="graphvizF" class="d-flex justify-content-evenly"></div>
               </p>
-            </div>              
+            </div>        
+            <div class="tab-pane fade" id="rRuta">
+              <p>
+                <div>
+                  <div class="d-flex justify-content-center"><h2>Rutas</h2></div>               
+                </div>
+                <div id="grafRuta" class="grafica"></div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaRuta" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Adyacentes (distancia)</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
+                <div id="graphvizR" class="d-flex justify-content-evenly"></div>
+              </p>
+            </div> 
+            <div class="tab-pane fade" id="rRutaOptima">
+              <p>
+                <div>
+                  <div class="d-flex justify-content-center"><h2>Ruta Óptima</h2></div>               
+                </div>
+                <div>
+                  <form id="gRutaOptima">
+                    <div class="d-flex justify-content-evenly">
+                      <div class="form-group">
+                        <label for="inicio" class="form-label">Inicio</label>
+                        <select class="form-select" id="inicio"></select>
+                      </div>
+                      <div class="form-group">
+                        <label for="final" class="form-label">Final</label>
+                        <select class="form-select" id="final"></select>
+                      </div>
+                      <div class="align-self-center">
+                        <button type="submit" class="btn btn-success">
+                          Calcular
+                        </button>
+                      </div>                       
+                    </div>   
+                  </form>
+                </div> 
+                <br>
+                <div id="grafRutaOptima" class="grafica"></div>
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <table id="tablaRutaOptima" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID Venta</th>
+                        <th scope="col">Vendedor</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Productos</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
+                <div id="graphvizRO" class="d-flex justify-content-evenly"></div>
+              </p>
+            </div>       
           </div>   
         </div>
       </div>
@@ -274,6 +352,7 @@
     <script type="text/javascript" src="./js/B.js"></script>
     <script type="text/javascript" src="./js/TablaHash.js"></script>
     <script type="text/javascript" src="./js/Matriz.js"></script>
+    <script type="text/javascript" src="./js/Grafo.js"></script>
     <script type="text/javascript" src="./js/ListaDoble.js"></script>
     <script type="text/javascript" src="./js/reportes.js"></script>
   </body>

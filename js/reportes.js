@@ -225,7 +225,6 @@ function graficarHash() {
     let hashProductos = new TablaHash();
     hashProductos = s.deserealizar(hashProductos, 'f');
     hashProductos.deserealizarEDD();
-    console.log(hashProductos)
     document.getElementById('graphvizF').innerHTML = hashProductos.graphviz()
     hashProductos.dotgen();
 
@@ -255,6 +254,79 @@ function graficarHash() {
         },
     };
     let network = new vis.Network(container, data, options);
+}
+
+function graficarGrafo() {
+    let s = new Serealizacion();
+    let grafoRutas = new Grafo();
+    grafoRutas = s.deserealizar(grafoRutas, 'r');
+    grafoRutas.deserealizarEDD();
+    document.getElementById('graphvizR').innerHTML = grafoRutas.graphviz()
+    grafoRutas.dotgen();
+
+    // tabla con todos los datos necesarios
+    let inner = '';
+    inner = tablaRuta(inner, grafoRutas);
+    document.getElementById('tablaRuta').innerHTML += inner;
+
+    // usando la librería de vis-network
+    let container = document.getElementById("grafRuta");
+    let DOTstring = grafoRutas.dot;
+    let parsedData = vis.parseDOTNetwork(DOTstring);
+    let data = {
+        nodes: parsedData.nodes,
+        edges: parsedData.edges
+    }
+    let options = {};
+    let network = new vis.Network(container, data, options);
+}
+
+function graficarRutaOptima() {
+    let s = new Serealizacion();
+    let grafoRutas = new Grafo();
+    grafoRutas = s.deserealizar(grafoRutas, 'r');
+    grafoRutas.deserealizarEDD();
+    let inner1 = '';
+    inner1 = opRutas(inner1, grafoRutas);
+    document.getElementById('inicio').innerHTML = inner1;
+    document.getElementById('final').innerHTML = inner1;
+
+    let form = document.getElementById('gRutaOptima');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        let inicio = document.getElementById('inicio').value;
+        let final = document.getElementById('final').value;
+
+        let grafoOptimo = grafoRutas.rutaOptima(parseInt(inicio), parseInt(final), grafoRutas);
+        document.getElementById('graphvizRO').innerHTML = grafoOptimo.graphvizRutaOptima();
+        grafoOptimo.dotgenRutaOptima();
+
+        // tabla con todos los datos necesarios
+        // let inner = '';
+        // inner = tablaRuta(inner, grafoRutas);
+        // document.getElementById('tablaRuta').innerHTML += inner;
+
+        // usando la librería de vis-network
+        let container = document.getElementById("grafRutaOptima");
+        let DOTstring = grafoOptimo.dot;
+        let parsedData = vis.parseDOTNetwork(DOTstring);
+        let data = {
+            nodes: parsedData.nodes,
+            edges: parsedData.edges
+        }
+        let options = {};
+        let network = new vis.Network(container, data, options);
+    });
+}
+
+function opRutas(inner, grafo) {
+    let aux = grafo.primero;
+    // graficando los nodos
+    while (aux != null) {
+        inner += '<option>' + aux.dato.id + '</option>';
+        aux = aux.siguiente;
+    }
+    return inner;
 }
 
 function op(inner, aux) {
@@ -322,9 +394,28 @@ function tablaHash(inner, aux) {
     return inner;
 }
 
+function tablaRuta(inner, grafo) {
+    let aux = grafo.primero;
+    // graficando los nodos
+    while (aux != null) {
+        inner += '<tr><td>' + aux.dato.id + '</td><td>' + aux.dato.nombre + '</td><td>';
+
+        let aux2 = aux.adyacentes.primero;
+        while (aux2 != null) {
+            inner += aux2.dato.id + ' (' + aux2.dato.distancia + '), ';
+            aux2 = aux2.siguiente;
+        }
+        inner += '</td></tr>'
+        aux = aux.siguiente;
+    }
+    return inner;
+}
+
 graficarAVL();
 graficarABB();
 graficarListaDoble();
 graficarMatrix();
 graficarB();
-graficarHash()
+graficarHash();
+graficarGrafo();
+graficarRutaOptima();
