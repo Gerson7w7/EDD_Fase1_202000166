@@ -230,6 +230,17 @@ class AVL {
         return usuario;
     }
 
+    buscarVendedor(id, usuario, aux){
+        if(aux != null){
+            usuario = this.buscarVendedor(id, usuario, aux.izq);
+            if(aux.dato.id == id){
+                return aux.dato;
+            } 
+            usuario = this.buscarVendedor(id, usuario, aux.der);
+        } 
+        return usuario;
+    }
+
     retornarListaClientes(username, lista, aux){
         if(aux != null){
             lista =  this.retornarListaClientes(username, lista, aux.izq);
