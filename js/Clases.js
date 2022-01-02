@@ -61,6 +61,6 @@ class Ruta{
         this.nombre = nombre;
         this.distancia = distancia;
         this.camino = null;
-        this.acumulado = this.distancia;
+        this.acumulado = distancia;
     }
 }

@@ -297,9 +297,10 @@ function graficarRutaOptima() {
         let inicio = document.getElementById('inicio').value;
         let final = document.getElementById('final').value;
 
-        let grafoOptimo = grafoRutas.rutaOptima(parseInt(inicio), parseInt(final), grafoRutas);
-        document.getElementById('graphvizRO').innerHTML = grafoOptimo.graphvizRutaOptima();
-        grafoOptimo.dotgenRutaOptima();
+        let nodoFinal = grafoRutas.rutaOptima(parseInt(inicio), parseInt(final), grafoRutas);
+        document.getElementById('totalRuta').innerHTML = nodoFinal.dato.acumulado;
+        document.getElementById('graphvizRO').innerHTML = graphvizRutaOptima(nodoFinal);
+        let dot = dotgenRutaOptima(nodoFinal);
 
         // tabla con todos los datos necesarios
         // let inner = '';
@@ -308,7 +309,7 @@ function graficarRutaOptima() {
 
         // usando la librería de vis-network
         let container = document.getElementById("grafRutaOptima");
-        let DOTstring = grafoOptimo.dot;
+        let DOTstring = dot;
         let parsedData = vis.parseDOTNetwork(DOTstring);
         let data = {
             nodes: parsedData.nodes,
@@ -317,6 +318,44 @@ function graficarRutaOptima() {
         let options = {};
         let network = new vis.Network(container, data, options);
     });
+}
+
+function dotgenRutaOptima(nodoFinal){
+    console.log(nodoFinal)
+    let dot = "digraph arbolB{ \n";
+    dot += "graph [rankdir = TB]\n";
+    let aux = nodoFinal;
+    // graficando los nodos
+    while(aux != null){
+        dot += "n" + aux.dato.id + "[label= \"" + aux.dato.id + ", " + aux.dato.nombre + "\"];\n"
+        aux = aux.dato.camino;
+    }
+    // graficando las relaciones de los nodos
+    aux = nodoFinal;
+    while(aux.dato.camino != null){
+        dot += "n" + aux.dato.id + " -- n" + aux.dato.camino.dato.id + " [label=\"" + aux.dato.distancia + "\"];\n";
+        aux = aux.dato.camino;
+    }
+    dot += "} \n"
+    return dot;
+}
+
+function graphvizRutaOptima(nodoFinal){
+    let cadena = "graph grafo {</br>\n rankdir=\"LR\" </br>\n concentrate=true </br>\n"
+    let aux = nodoFinal;
+    // graficando los nodos
+    while(aux != null){
+        cadena += "n" + aux.dato.id + "[label= \"" + aux.dato.id + ", " + aux.dato.nombre + "\"];</br>\n"
+        aux = aux.dato.camino;
+    }
+    // graficando las relaciones de los nodos
+    aux = nodoFinal;
+    while(aux.dato.camino != null){
+        cadena += "n" + aux.dato.id + " -- n" + aux.dato.camino.dato.id + " [label=\"" + aux.dato.distancia + "\"];</br>\n";
+        aux = aux.dato.camino;
+    }
+    cadena += "}"
+    return cadena;
 }
 
 function opRutas(inner, grafo) {

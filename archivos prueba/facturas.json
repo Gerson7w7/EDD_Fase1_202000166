@@ -11,6 +11,14 @@
                 {
                     "id": 112,
                     "cantidad": 1
+                },
+                {
+                    "id": 122,
+                    "cantidad": 10
+                },
+                {
+                    "id": 117,
+                    "cantidad": 5
                 }
             ]
         },
@@ -64,6 +72,54 @@
                 },
                 {
                     "id": 121,
+                    "cantidad": 7
+                },
+                {
+                    "id": 122,
+                    "cantidad": 7
+                }
+            ]
+        },
+        {
+            "vendedor": "vendedor4",
+            "cliente": "cliente4",
+            "productos": [
+                {
+                    "id": 111,
+                    "cantidad": 10
+                },
+                {
+                    "id": 113,
+                    "cantidad": 2
+                },
+                {
+                    "id": 118,
+                    "cantidad": 7
+                },
+                {
+                    "id": 120,
+                    "cantidad": 7
+                }
+            ]
+        },
+        {
+            "vendedor": "vendedor1",
+            "cliente": "cliente10",
+            "productos": [
+                {
+                    "id": 111,
+                    "cantidad": 10
+                },
+                {
+                    "id": 113,
+                    "cantidad": 2
+                },
+                {
+                    "id": 118,
+                    "cantidad": 7
+                },
+                {
+                    "id": 120,
                     "cantidad": 7
                 }
             ]
