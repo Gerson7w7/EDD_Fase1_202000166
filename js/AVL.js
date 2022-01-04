@@ -285,14 +285,25 @@ class AVL {
             let s = new Serealizacion();
             if(aux.dato.lClientes != null){
                 aux.dato.lClientes = s.cambiazo(new ListaDoble(), aux.dato.lClientes);
-                // aux.dato.lClientes.mostrar(); 
             }if(aux.dato.eventos.primero != null){
                 aux.dato.eventos = s.cambiazo(new ListaDoble(), aux.dato.eventos);
                 aux.dato.eventos.deserealizarEDD();
-                // aux.dato.eventos.mostrar2(); 
             } 
             this.deserealizarEDD(aux.der);
         } 
+    }
+
+    encrypt(aux){
+        if(aux != null){
+            aux.izq = this.encrypt(aux.izq);
+            aux.dato.nombre = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(aux.dato.nombre)); 
+            aux.dato.username = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(aux.dato.username));
+            aux.dato.edad = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(aux.dato.edad));  
+            aux.dato.correo = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(aux.dato.correo)); 
+            aux.dato.password = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(aux.dato.password)); 
+            aux.der = this.encrypt(aux.der);
+        } 
+        return aux;
     }
 
     // ========== RRECORRIDOS ========

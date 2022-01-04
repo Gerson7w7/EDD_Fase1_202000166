@@ -450,6 +450,47 @@ function tablaRuta(inner, grafo) {
     return inner;
 }
 
+function graficarAVLEncriptado() {
+    let s = new Serealizacion();
+    let arbolVendedores = new AVL();
+    arbolVendedores = s.deserealizar(arbolVendedores, 'v');
+    arbolVendedores.raiz = arbolVendedores.encrypt(arbolVendedores.raiz);
+    document.getElementById('graphvizUE').innerHTML = arbolVendedores.graphviz()
+    arbolVendedores.dot = '{'
+    arbolVendedores.dotgen(arbolVendedores.raiz);
+    arbolVendedores.dot += '}'
+
+    // tabla con todos los datos necesarios
+    let inner = '';
+    inner = tablaAVL(inner, arbolVendedores.raiz);
+    document.getElementById('tablaUsuariosEncrypt').innerHTML += inner;
+
+    // usando la librería de vis-network
+    let container = document.getElementById("grafUsuariosEncrypt");
+    let DOTstring = arbolVendedores.dot;
+    let parsedData = vis.parseDOTNetwork(DOTstring);
+    let data = {
+        nodes: parsedData.nodes,
+        edges: parsedData.edges
+    }
+    let options = {
+        nodes: {
+            widthConstraint: 20,
+        },
+        layout: {
+            hierarchical: {
+                levelSeparation: 100,
+                nodeSpacing: 100,
+                parentCentralization: true,
+                direction: 'UD',        // UD, DU, LR, RL
+                sortMethod: 'directed',  // hubsize, directed
+                shakeTowards: 'roots'  // roots, leaves                        
+            },
+        },
+    };
+    let network = new vis.Network(container, data, options);
+}
+
 graficarAVL();
 graficarABB();
 graficarListaDoble();

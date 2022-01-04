@@ -113,6 +113,11 @@
                 ><span><i class="fas fa-route"></i></span> Ruta Optima</a
               >
             </li>
+            <li class="nav-item tab">
+              <a class="nav-link" data-bs-toggle="tab" onclick="graficarAVLEncriptado()" href="#encriptUsuarios"
+                ><span><i class="fas fa-eye-slash"></i></span> Usuarios encriptados</a
+              >
+            </li>
           </ul>
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active show" id="rUsuario">
@@ -328,7 +333,33 @@
                 <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
                 <div id="graphvizRO" class="d-flex justify-content-evenly"></div>
               </p>
-            </div>       
+            </div>  
+            <div class="tab-pane fade active show" id="encriptUsuarios">
+              <p>
+                <div>
+                  <div class="d-flex justify-content-center"><h2>Usuarios encriptados</h2></div>               
+                </div>
+                <div id="grafUsuariosEncrypt" class="grafica"></div>
+                <br><br>
+                <div>
+                  <table id="tablaUsuariosEncrypt" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Password</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
+                <div id="graphvizUE" class="d-flex justify-content-evenly"></div>
+              </p>
+            </div>     
           </div>   
         </div>
       </div>
@@ -337,6 +368,7 @@
     <script type="text/javascript" src="./js/Clases.js"></script>
     <script type="text/javascript" src="./js/vis-network.min.js"></script>
     <script type="text/javascript" src="./js/circular-json.js"></script>
+    <script type="text/javascript" src="./js/sjcl.js"></script>
     <script type="text/javascript" src="./js/Serealizacion.js"></script>
     <script type="text/javascript" src="./js/AVL.js"></script>
     <script type="text/javascript" src="./js/ABB.js"></script>

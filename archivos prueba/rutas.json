@@ -13,6 +13,11 @@
                     "id": 5,
                     "nombre": "bodega5",
                     "distancia": 5
+                },
+                {
+                    "id": 7,
+                    "nombre": "bodega7",
+                    "distancia": 2
                 }
             ]
         },
@@ -34,7 +39,12 @@
                     "id": 5,
                     "nombre": "bodega5",
                     "distancia": 2
-                }
+                },
+                {
+                    "id": 9,
+                    "nombre": "bodega9",
+                    "distancia": 1
+                }  
             ]
         },
         {
@@ -71,7 +81,22 @@
                     "id": 5,
                     "nombre": "bodega5",
                     "distancia": 2
-                }
+                },
+                {
+                    "id": 6,
+                    "nombre": "bodega6",
+                    "distancia": 1
+                },
+                {
+                    "id": 8,
+                    "nombre": "bodega8",
+                    "distancia": 2
+                },
+                {
+                    "id": 9,
+                    "nombre": "bodega9",
+                    "distancia": 2
+                }                
             ]
         },
         {
@@ -97,6 +122,95 @@
                     "id": 2,
                     "nombre": "bodega4",
                     "distancia": 2
+                },
+                {
+                    "id": 6,
+                    "nombre": "bodega6",
+                    "distancia": 3
+                },
+                {
+                    "id": 7,
+                    "nombre": "bodega7",
+                    "distancia": 3
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "nombre": "bodega6",
+            "adyacentes": [
+                {
+                    "id": 5,
+                    "nombre": "bodega5",
+                    "distancia": 3
+                },
+                {
+                    "id": 4,
+                    "nombre": "bodega4",
+                    "distancia": 1
+                },
+                {
+                    "id": 7,
+                    "nombre": "bodega7",
+                    "distancia": 4
+                },
+                {
+                    "id": 8,
+                    "nombre": "bodega8",
+                    "distancia": 1
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "nombre": "bodega7",
+            "adyacentes": [
+                {
+                    "id": 6,
+                    "nombre": "bodega6",
+                    "distancia": 4
+                },
+                {
+                    "id": 1,
+                    "nombre": "bodega1",
+                    "distancia": 2
+                },
+                {
+                    "id": 5,
+                    "nombre": "bodega5",
+                    "distancia": 3
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "nombre": "bodega8",
+            "adyacentes": [
+                {
+                    "id": 6,
+                    "nombre": "bodega6",
+                    "distancia": 1
+                },
+                {
+                    "id": 4,
+                    "nombre": "bodega4",
+                    "distancia": 2
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "nombre": "bodega9",
+            "adyacentes": [
+                {
+                    "id": 4,
+                    "nombre": "bodega4",
+                    "distancia": 2
+                },
+                {
+                    "id": 2,
+                    "nombre": "bodega2",
+                    "distancia": 1
                 }
             ]
         }
