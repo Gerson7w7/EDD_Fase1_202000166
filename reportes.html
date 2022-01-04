@@ -118,6 +118,11 @@
                 ><span><i class="fas fa-eye-slash"></i></span> Usuarios encriptados</a
               >
             </li>
+            <li class="nav-item tab">
+              <a class="nav-link" data-bs-toggle="tab" onclick="graficarBlockChain()" href="#blockchain"
+                ><span><i class="fas fa-money-bill-wave"></i></span> BlockChain</a
+              >
+            </li>
           </ul>
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active show" id="rUsuario">
@@ -334,7 +339,7 @@
                 <div id="graphvizRO" class="d-flex justify-content-evenly"></div>
               </p>
             </div>  
-            <div class="tab-pane fade active show" id="encriptUsuarios">
+            <div class="tab-pane fade" id="encriptUsuarios">
               <p>
                 <div>
                   <div class="d-flex justify-content-center"><h2>Usuarios encriptados</h2></div>               
@@ -359,6 +364,28 @@
                 <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
                 <div id="graphvizUE" class="d-flex justify-content-evenly"></div>
               </p>
+            </div> 
+            <div class="tab-pane fade" id="blockchain">
+              <p>
+                <div>
+                  <div class="d-flex justify-content-center"><h2>Blockchain</h2></div>               
+                </div>
+                <div id="grafBlockchain" class="grafica"></div>
+                <br><br>
+                <div>
+                  <table id="tablaBlockchain" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Indice</th>
+                        <th scope="col">Data</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <br><br>
+                <div class="d-flex justify-content-evenly"><h3>Graphviz</h3></div>
+                <div id="graphvizBC" class="d-flex justify-content-evenly"></div>
+              </p>
             </div>     
           </div>   
         </div>
@@ -373,6 +400,7 @@
     <script type="text/javascript" src="./js/AVL.js"></script>
     <script type="text/javascript" src="./js/ABB.js"></script>
     <script type="text/javascript" src="./js/B.js"></script>
+    <script type="text/javascript" src="./js/BlockChain.js"></script>
     <script type="text/javascript" src="./js/TablaHash.js"></script>
     <script type="text/javascript" src="./js/Matriz.js"></script>
     <script type="text/javascript" src="./js/Grafo.js"></script>

@@ -302,11 +302,6 @@ function graficarRutaOptima() {
         document.getElementById('graphvizRO').innerHTML = graphvizRutaOptima(nodoFinal);
         let dot = dotgenRutaOptima(nodoFinal);
 
-        // tabla con todos los datos necesarios
-        // let inner = '';
-        // inner = tablaRuta(inner, grafoRutas);
-        // document.getElementById('tablaRuta').innerHTML += inner;
-
         // usando la librería de vis-network
         let container = document.getElementById("grafRutaOptima");
         let DOTstring = dot;
@@ -481,6 +476,50 @@ function graficarAVLEncriptado() {
             hierarchical: {
                 levelSeparation: 100,
                 nodeSpacing: 100,
+                parentCentralization: true,
+                direction: 'UD',        // UD, DU, LR, RL
+                sortMethod: 'directed',  // hubsize, directed
+                shakeTowards: 'roots'  // roots, leaves                        
+            },
+        },
+    };
+    let network = new vis.Network(container, data, options);
+}
+
+function graficarBlockChain() {
+    let s = new Serealizacion();
+    let hashProductos = new TablaHash();
+    hashProductos = s.deserealizar(hashProductos, 'f');
+    hashProductos.deserealizarEDD();
+    // block chain
+    let blockchain = new Chain()
+    // recorriendo el hash
+    for(let i = 0; i < hashProductos.size; i++){
+        if(hashProductos.claves[i] != null){
+            blockchain.add(CircularJSON.stringify(hashProductos.claves[i].dato));
+        }
+    }
+    // graficando
+    document.getElementById('graphvizBC').innerHTML = blockchain.graphviz()
+    let dot = blockchain.dotgen();
+    // tabla con todos los datos necesarios
+    let inner = '';
+    inner = blockchain.tablaBlockChain(inner);
+    document.getElementById('tablaBlockchain').innerHTML += inner;
+
+    // usando la librería de vis-network
+    let container = document.getElementById("grafBlockchain");
+    let DOTstring = dot;
+    let parsedData = vis.parseDOTNetwork(DOTstring);
+    let data = {
+        nodes: parsedData.nodes,
+        edges: parsedData.edges
+    }
+    let options = {
+        layout: {
+            hierarchical: {
+                levelSeparation: 100,
+                nodeSpacing: 250,
                 parentCentralization: true,
                 direction: 'UD',        // UD, DU, LR, RL
                 sortMethod: 'directed',  // hubsize, directed
